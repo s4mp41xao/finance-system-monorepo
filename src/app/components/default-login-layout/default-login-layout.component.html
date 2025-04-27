@@ -2,14 +2,20 @@
   <section class="form-section">
     <img src="" alt="" />
     <h2>{{ title }}</h2>
-    <ng-content>
-      <p>oi</p>
-    </ng-content>
-    <button class="login-button">{{ loginButtonText }}</button>
+    <ng-content></ng-content>
+    <button
+      class="login-button"
+      (click)="submit()"
+      [disabled]="disableLoginButton"
+    >
+      {{ loginButtonText }}
+    </button>
     <div>
       <span>ou</span>
     </div>
-    <button class="register-button">{{ registerButtonText }}</button>
+    <button class="register-button" (click)="navigate()">
+      {{ registerButtonText }}
+    </button>
   </section>
   <section>
     <h1>Controll your finance now!</h1>
