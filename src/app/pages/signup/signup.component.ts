@@ -54,7 +54,11 @@ export class SignUpComponent {
   // send data to DB
   submit() {
     this.loginService
-      .login(this.signupForm.value.email, this.signupForm.value.password)
+      .signup(
+        this.signupForm.value.name,
+        this.signupForm.value.email,
+        this.signupForm.value.password
+      )
       .subscribe({
         next: () => this.toastService.success('Usúario logado com sucesso!'),
         error: () => this.toastService.error('Erro ao logar'),
