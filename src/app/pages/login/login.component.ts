@@ -49,9 +49,13 @@ export class LoginComponent {
     this.loginService
       .login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe({
-        next: () => this.toastService.success('Usúario logado com sucesso!'),
+        next: () => {
+          this.toastService.success('Usúario logado com sucesso!');
+          this.router.navigate(['/dashboard']);
+        },
         error: () => this.toastService.error('Erro ao logar'),
       });
+    // console.log(this.loginForm.value.email);
   }
 
   // create route to signup
