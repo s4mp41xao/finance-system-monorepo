@@ -28,23 +28,13 @@ export const routes: Routes = [
     component: SignUpComponent,
   },
   {
-    path: 'home',
-    component: HomeComponent,
+    path: '',
+    component: HomeComponent, // Agora HomeComponent é o layout geral
     canActivate: [AuthGuard],
-
     children: [
-      {
-        path: '',
-        component: DashboardComponent,
-      },
-      {
-        path: 'expenses',
-        component: ExpensesComponent,
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-      },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'expenses', component: ExpensesComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
   },
 ];

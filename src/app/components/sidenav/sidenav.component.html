@@ -1,24 +1,28 @@
-<div class="scrollwrap scrollwrap_delayed">
+<div [class.collapsed]="!isExpanded" class="sidenav-container">
+  <button class="toggle-btn" (click)="toggleSidenav()">
+    <i [ngClass]="isExpanded ? 'fa fa-angle-left' : 'fa fa-angle-right'"></i>
+  </button>
+
   <div class="sidenav">
     <ul class="sidenav-nav">
       <li>
         <a
-          [routerLink]="['/home/dashboard']"
+          [routerLink]="['/dashboard']"
           routerLinkActive="router-link-active"
           class="sidenav-nav-item"
         >
-          <i class="sidenav-link-icon"></i>
-          <span class="sidenav-link-text"> Dashboard </span>
+          <i class="sidenav-link-icon fa fa-tachometer">D</i>
+          <span class="sidenav-link-text" *ngIf="isExpanded">Dashboard</span>
         </a>
       </li>
       <li>
         <a
-          [routerLink]="['/home/expenses']"
+          [routerLink]="['/expenses']"
           routerLinkActive="router-link-active"
           class="sidenav-nav-item"
         >
-          <i class="sidenav-link-icon"></i>
-          <span class="sidenav-link-text">Despesas</span>
+          <i class="sidenav-link-icon fa fa-money-bill">E</i>
+          <span class="sidenav-link-text" *ngIf="isExpanded">Despesas</span>
         </a>
       </li>
     </ul>

@@ -11,7 +11,7 @@ export class AuthRedirectGuard implements CanActivate {
     const authToken = sessionStorage.getItem('auth-token');
 
     if (authToken) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dashboard']);
     } else {
       this.router.navigate(['/login']);
     }
