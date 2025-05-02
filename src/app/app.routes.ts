@@ -5,6 +5,8 @@ import { AuthGuard } from './services/auth-guard.service';
 import { HomeComponent } from './pages/home/home.component';
 import { EmptyComponent } from './components/empty/empty.component';
 import { AuthRedirectGuard } from './services/auth-redirect.guard';
+import { ExpensesComponent } from './pages/home/expenses/expenses.component';
+import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
@@ -29,5 +31,20 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     canActivate: [AuthGuard],
+
+    children: [
+      {
+        path: '',
+        component: DashboardComponent,
+      },
+      {
+        path: 'expenses',
+        component: ExpensesComponent,
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+    ],
   },
 ];

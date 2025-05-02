@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { ContentComponent } from './content/content.component';
+import { ContentComponent } from '../content/content.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
-  imports: [ContentComponent],
+  imports: [RouterModule],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.css',
 })

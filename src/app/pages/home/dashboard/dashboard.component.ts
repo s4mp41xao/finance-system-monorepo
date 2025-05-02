@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { SidenavComponent } from '../../../components/sidenav/sidenav.component';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [SidenavComponent],
+  imports: [],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
+  // encapsulation: ViewEncapsulation.None,
 })
 export class DashboardComponent {
   // userLogged(){
