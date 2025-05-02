@@ -20,32 +20,50 @@
 
 .sidenav-nav {
   list-style: none;
-  padding: 0;
+  padding: 0.938rem;
   margin: 0;
+  /* padding: 1rem; */
 }
 
 .sidenav-nav-item {
+  width: 100%;
+  margin-bottom: 0.65rem;
+}
+
+/* item */
+.sidenav-nav-link {
   display: flex;
   align-items: center;
-  padding: 1rem;
-  text-decoration: none;
+  height: 3rem;
   color: white;
+  text-decoration: none;
+  border-radius: 0.625rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  /* transition: background 0.3s ease; */
+  transition: all 0.3s ease;
 }
 
 .sidenav-nav-item:hover {
   background: #37474f;
 }
 
+/* item icon */
 .sidenav-link-icon {
-  width: 1.5rem;
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 0.5rem;
   text-align: center;
 }
 
+/* item text */
 .sidenav-link-text {
   margin-left: 1rem;
   white-space: nowrap;
+}
+
+.sidenav-nav-link:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 /* Toggle button style */

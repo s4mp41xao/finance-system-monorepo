@@ -5,21 +5,21 @@
 
   <div class="sidenav">
     <ul class="sidenav-nav">
-      <li>
+      <li class="sidenav-nav-item">
         <a
           [routerLink]="['/dashboard']"
           routerLinkActive="router-link-active"
-          class="sidenav-nav-item"
+          class="sidenav-nav-link"
         >
           <i class="sidenav-link-icon fa fa-tachometer">D</i>
           <span class="sidenav-link-text" *ngIf="isExpanded">Dashboard</span>
         </a>
       </li>
-      <li>
+      <li class="sidenav-nav-item">
         <a
           [routerLink]="['/expenses']"
           routerLinkActive="router-link-active"
-          class="sidenav-nav-item"
+          class="sidenav-nav-link"
         >
           <i class="sidenav-link-icon fa fa-money-bill">E</i>
           <span class="sidenav-link-text" *ngIf="isExpanded">Despesas</span>
