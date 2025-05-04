@@ -60,8 +60,12 @@ export class SignUpComponent {
         this.signupForm.value.password
       )
       .subscribe({
-        next: () => this.toastService.success('Usúario logado com sucesso!'),
-        error: () => this.toastService.error('Erro ao logar'),
+        next: () => {
+          this.toastService.success('Usúario registrado com sucesso!');
+          this.router.navigate(['/dashboard']);
+        },
+
+        error: () => this.toastService.error('Erro ao registrar'),
       });
   }
 
