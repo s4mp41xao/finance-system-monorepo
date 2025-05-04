@@ -51,7 +51,7 @@ export class LoginComponent {
       .subscribe({
         next: () => {
           this.toastService.success('Usúario logado com sucesso!');
-          this.router.navigate(['/home']);
+          this.router.navigate(['/dashboard']);
         },
         error: () => this.toastService.error('Erro ao logar'),
       });
@@ -66,7 +66,7 @@ export class LoginComponent {
   ngOnInit() {
     const authToken = sessionStorage.getItem('auth-token');
     if (authToken) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dashboard']);
     }
   }
 }
