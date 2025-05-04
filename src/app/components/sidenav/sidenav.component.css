@@ -1,7 +1,7 @@
 .sidenav-container {
   display: flex;
   flex-direction: column;
-  width: 15rem; /* largura expandida */
+  width: 16.5625rem; /* largura expandida */
   transition: width 0.3s ease;
 }
 
@@ -32,6 +32,7 @@
 
 /* item */
 .sidenav-nav-link {
+  /* font-size: 1.1rem; */
   display: flex;
   align-items: center;
   height: 3rem;
@@ -53,6 +54,7 @@
   min-width: 2rem;
   margin: 0 0.5rem;
   text-align: center;
+  font-size: 25px;
 }
 
 /* item text */
@@ -68,13 +70,17 @@
 
 /* Toggle button style */
 .toggle-btn {
-  background: none;
+  /* background: none; */
   border: none;
   color: white;
+  background: #263238;
   cursor: pointer;
   padding: 1rem;
   width: 100%;
-  text-align: right;
+  /* text-align: right; */
+  font-size: 30px;
+  border-bottom: solid white 0.023rem;
+  /* border: solid white; */
 }
 
 .toggle-btn i {
