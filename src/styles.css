@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
 
+/* @import "src/styles/content-shared.css"; */
+
 @import "ngx-toastr/toastr";
 
 * {
@@ -16,4 +18,33 @@ body {
   /* font-optical-sizing: auto; */
   /* font-weight: 200; */
   /* font-style: normal; */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  margin: 1.25rem 0;
+  box-shadow: 0 0.25rem 0.5rem #e6edef;
+}
+
+.card-head {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #edf1f7;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 1rem 1.5rem;
+}
+
+.body-trimmed {
+  width: calc(100% - 16.5625rem);
+  margin-left: 16.5625rem;
+}
+
+.body-md-screen {
+  width: calc(100% - 5rem);
 }
