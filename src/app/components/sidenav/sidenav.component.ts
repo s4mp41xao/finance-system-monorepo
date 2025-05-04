@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Data, RouterModule } from '@angular/router';
 import { NgIcon } from '@ng-icons/core';
 
 @Component({
@@ -16,10 +16,4 @@ export class SidenavComponent {
   toggleSidenav() {
     this.isExpanded = !this.isExpanded;
   }
-
-  menuItems = [
-    { label: 'Dashboard', icon: '🏠', route: '/dashboard' },
-    { label: 'Expenses', icon: '⚙', route: '/expenses' },
-    // { label: 'Profile', icon: '👤', route: '/profile' },
-  ];
 }

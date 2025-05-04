@@ -86,3 +86,8 @@
 .toggle-btn i {
   font-size: 1.2rem;
 }
+
+.router-link-active {
+  background-color: #fff;
+  color: #000;
+}
