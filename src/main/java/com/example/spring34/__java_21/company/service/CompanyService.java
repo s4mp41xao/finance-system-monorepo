@@ -2,7 +2,7 @@ package com.example.spring34.__java_21.company.service;
 
 import com.example.spring34.__java_21.company.dto.request.CompanyRequest;
 import com.example.spring34.__java_21.company.dto.response.CompanyResponse;
-import com.example.spring34.__java_21.company.model.Company;
+import com.example.spring34.__java_21.company.model.CompanyModel;
 import com.example.spring34.__java_21.company.repository.CompanyRepository;
 import com.example.spring34.__java_21.domain.user.User;
 import com.example.spring34.__java_21.repositories.UserRepository;
@@ -30,20 +30,20 @@ public class CompanyService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         // Map the request to a Company entity
-        Company company = new Company();
-        company.setName(request.name());
-        company.setCnpj(request.cnpj());
-        company.setUser(user); // Set the owner of the company
+        CompanyModel companyModel = new CompanyModel();
+        companyModel.setName(request.name());
+        companyModel.setCnpj(request.cnpj());
+        companyModel.setUser(user); // Set the owner of the company
 
         // Save the company to the database
-        Company savedCompany = companyRepository.save(company);
+        CompanyModel savedCompanyModel = companyRepository.save(companyModel);
 
         // Build and return the response DTO
         return new CompanyResponse(
-                savedCompany.getId(),
-                savedCompany.getName(),
-                savedCompany.getCnpj(),
-                savedCompany.getCreationDate(),
+                savedCompanyModel.getId(),
+                savedCompanyModel.getName(),
+                savedCompanyModel.getCnpj(),
+                savedCompanyModel.getCreationDate(),
                 user.getId());
     }
 

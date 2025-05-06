@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,21 +20,24 @@ public class CompanyModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "company_seq")
     @SequenceGenerator(name = "company_seq", allocationSize = 1)
-    private Long id;
+    private Long id; // Primary key with sequence-based generation
 
     @Column(nullable = false)
-    private String name;
+    private String name; // Company name (cannot be null)
 
     @Column(nullable = false, unique = true)
-    private String cnpj;
+    private String cnpj; // Company CNPJ (must be unique and not null)
 
     @Column(name = "creation_date", nullable = false)
-    private LocalDateTime creationDate;
+    private LocalDateTime creationDate; // Timestamp of when the company was created
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private User user; // The user who owns this company
 
+    /**
+     * Automatically sets the creation date before the entity is persisted.
+     */
     @PrePersist
     protected void onCreate() {
         creationDate = LocalDateTime.now();
