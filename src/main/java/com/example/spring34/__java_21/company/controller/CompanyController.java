@@ -38,10 +38,8 @@ public class CompanyController {
      * @param authentication The current authenticated user (used to verify ownership).
      * @return 204 No Content when the deletion is successful.
      */
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCompany(
-            @PathVariable Long id,
-            Authentication authentication) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteCompany(@PathVariable("id") Long id, Authentication authentication) {
         companyService.deleteCompany(id, authentication.getName());
         return ResponseEntity.noContent().build();
     }

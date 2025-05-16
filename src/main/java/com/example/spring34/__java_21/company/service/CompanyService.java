@@ -6,6 +6,7 @@ import com.example.spring34.__java_21.company.model.CompanyModel;
 import com.example.spring34.__java_21.company.repository.CompanyRepository;
 import com.example.spring34.__java_21.domain.user.User;
 import com.example.spring34.__java_21.repositories.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -53,6 +54,7 @@ public class CompanyService {
      * @param companyId the ID of the company to delete.
      * @param username  the email of the authenticated user (retrieved from token).
      */
+    @Transactional
     public void deleteCompany(Long companyId, String username) {
         // Find the user by email (username); throw exception if not found
         User user = userRepository.findByEmail(username)
