@@ -4,6 +4,7 @@ import {
   mynaHome,
   mynaChevronRight,
   mynaChevronLeft,
+  mynaBuildingOne,
 } from '@ng-icons/mynaui/outline';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
@@ -16,6 +17,7 @@ import { RouterOutlet } from '@angular/router';
       mynaDollarCircle,
       mynaChevronRight,
       mynaChevronLeft,
+      mynaBuildingOne,
     }),
   ],
   templateUrl: './app.component.html',

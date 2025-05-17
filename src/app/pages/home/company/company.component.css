@@ -1,0 +1,23 @@
+/* add-company-modal.component.css */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.form-content-item {
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+}
