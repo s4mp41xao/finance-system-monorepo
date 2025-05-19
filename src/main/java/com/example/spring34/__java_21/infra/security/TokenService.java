@@ -41,14 +41,15 @@ public class TokenService {
     public String validateToken(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
-            String userEmail = JWT.require(algorithm)
+            var verifier = JWT.require(algorithm)
                     .withIssuer("login-auth-api")
-                    .build()
-                    .verify(token)
-                    .getSubject();
+                    .build();
 
-            // Verifica a role do token
-            String role = getRoleFromToken(token);  // Obtém a role
+            // Verifica o token
+            var decodedJWT = verifier.verify(token);
+
+            String userEmail = decodedJWT.getSubject();
+            String role = decodedJWT.getClaim("role").asString();
 
             // Valida se a role é "USER"
             if ("USER".equals(role)) {
