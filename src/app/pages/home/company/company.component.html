@@ -3,33 +3,74 @@
   <div class="card">
     <div class="card-head">Company</div>
     <div class="card-body">
+      <!-- <ng-icon name="mynaX" class="close-icon"></ng-icon> -->
       <button (click)="openModal()">Cadastrar Empresa</button>
 
       <div *ngIf="showModal" class="modal-backdrop" (click)="close()"></div>
+
       <div *ngIf="showModal" class="modal">
-        <h2>Nova Empresa</h2>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Cadastro de Empresas</h2>
 
-        <form
-          class="form-content"
-          [formGroup]="companyForm"
-          (ngSubmit)="onSubmit()"
-        >
-          <div class="form-content-item">
-            <label class="form-content-item-text">Nome da Empresa:</label>
-            <input type="text" formControlName="name" required />
-
-            <label>CNPJ:</label>
-            <input type="text" formControlName="cnpj" required />
-          </div>
-
-          <div class="modal-actions">
-            <button type="submit" [disabled]="companyForm.invalid">
-              Salvar
+            <button class="close-button" (click)="close()">
+              <ng-icon name="mynaX" class="icon close-icon"></ng-icon>
             </button>
-
-            <button type="button" (click)="close()">Fechar</button>
           </div>
-        </form>
+
+          <form
+            class="form-content"
+            [formGroup]="companyForm"
+            (ngSubmit)="onSubmit()"
+          >
+            <h4 class="form-header">Complete os campos abaixo:</h4>
+
+            <div class="modal-body">
+              <div class="form-content-item">
+                <label class="form-content-item-text">Nome da Empresa:</label>
+
+                <div class="input-content">
+                  <div class="form-icon">
+                    <ng-icon name="mynaBuilding" class="company-icon"></ng-icon>
+                  </div>
+
+                  <input
+                    class="input-field"
+                    type="text"
+                    formControlName="name"
+                    placeholder="Ex: Bradesco"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-content-item">
+                <label class="form-content-item-text">CNPJ:</label>
+
+                <div class="input-content">
+                  <div class="form-icon">
+                    <ng-icon
+                      name="tdesignFactCheck"
+                      class="company-icon"
+                    ></ng-icon>
+                  </div>
+
+                  <input
+                    class="input-field"
+                    type="text"
+                    formControlName="cnpj"
+                    placeholder="Ex: 00.000.000/0000-00"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="button-container">
+                <button class="button-save" type="submit">Salvar</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

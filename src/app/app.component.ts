@@ -5,7 +5,13 @@ import {
   mynaChevronRight,
   mynaChevronLeft,
   mynaBuildingOne,
+  mynaX,
+  mynaBuilding,
+  mynaListNumber,
 } from '@ng-icons/mynaui/outline';
+
+import { tdesignMoneyFilled, tdesignFactCheck } from '@ng-icons/tdesign-icons';
+
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 @Component({
@@ -18,6 +24,11 @@ import { RouterOutlet } from '@angular/router';
       mynaChevronRight,
       mynaChevronLeft,
       mynaBuildingOne,
+      mynaX,
+      mynaBuilding,
+      mynaListNumber,
+      tdesignMoneyFilled,
+      tdesignFactCheck,
     }),
   ],
   templateUrl: './app.component.html',
