@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgIcon } from '@ng-icons/core';
 import { ChangeDetectorRef } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-company',
@@ -24,7 +25,8 @@ export class CompanyComponent {
   constructor(
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastService: ToastrService
   ) {
     this.companyForm = this.fb.group({
       name: ['', Validators.required],
@@ -33,10 +35,10 @@ export class CompanyComponent {
   }
 
   onSubmit() {
-    if (this.companyForm.valid) {
-      const payload = this.companyForm.value;
+    const token = sessionStorage.getItem('auth-token');
 
-      const token = sessionStorage.getItem('auth-token');
+    if (this.companyForm.valid && token) {
+      const payload = this.companyForm.value;
 
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
@@ -46,9 +48,11 @@ export class CompanyComponent {
       this.http
         .post('http://localhost:8080/api/companies', payload, { headers })
         .subscribe({
-          next: () => this.close(),
-          error: (error) => console.error('Erro ao criar empresa:', error),
-          // console.log(headers),
+          next: () => {
+            this.toastService.success('Empresa criada com sucesso!');
+            this.close();
+          },
+          error: () => this.toastService.error('Erro ao criar empresa'),
         });
     } else {
       console.warn('Form inválido ou token não encontrado!');
