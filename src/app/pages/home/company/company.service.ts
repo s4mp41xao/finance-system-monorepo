@@ -25,4 +25,12 @@ export class CompanyService {
 
     return this.http.post(this.apiUrl, payload, { headers });
   }
+
+  getCompaniesByUser(): Observable<any[]> {
+    const token = sessionStorage.getItem('auth-token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get<any[]>(this.apiUrl, { headers });
+  }
 }
