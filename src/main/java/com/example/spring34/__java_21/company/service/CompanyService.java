@@ -30,6 +30,13 @@ public class CompanyService {
         User user = userRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
+        // Checks if there is already a company with the same CNPJ associated with the same user.
+        boolean companyExists = companyRepository.existsByCnpjAndUserId(request.cnpj(), user.getId());
+
+        if (companyExists) {
+            throw new IllegalArgumentException("Você já possui uma empresa registrada com esse CNPJ.");
+        }
+
         // Map the request to a Company entity
         CompanyModel companyModel = new CompanyModel();
         companyModel.setName(request.name());

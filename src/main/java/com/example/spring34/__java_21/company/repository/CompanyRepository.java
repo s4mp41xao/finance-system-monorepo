@@ -30,4 +30,6 @@ public interface CompanyRepository extends JpaRepository<CompanyModel, Long> {
      * @param userId    the ID of the user (owner)
      */
     void deleteByIdAndUserId(Long companyId, Long userId);
+
+    boolean existsByCnpjAndUserId(String cnpj, Long userId);
 }

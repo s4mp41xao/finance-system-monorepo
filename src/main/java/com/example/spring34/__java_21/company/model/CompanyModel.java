@@ -25,8 +25,8 @@ public class CompanyModel {
     @Column(nullable = false)
     private String name; // Company name (cannot be null)
 
-    @Column(nullable = false, unique = true)
-    private String cnpj; // Company CNPJ (must be unique and not null)
+    @Column(nullable = false)
+    private String cnpj; // Company CNPJ (is unique only by user)
 
     @Column(name = "creation_date", nullable = false)
     private LocalDateTime creationDate; // Timestamp of when the company was created
