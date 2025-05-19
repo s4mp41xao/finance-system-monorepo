@@ -5,14 +5,15 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgIcon } from '@ng-icons/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { CompanyService } from './company.service';
 
 @Component({
   selector: 'app-company',
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule, NgIcon],
   templateUrl: './company.component.html',
   styleUrl: './company.component.css',
@@ -25,7 +26,7 @@ export class CompanyComponent {
   constructor(
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
-    private http: HttpClient,
+    private companyService: CompanyService,
     private toastService: ToastrService
   ) {
     this.companyForm = this.fb.group({
@@ -35,27 +36,18 @@ export class CompanyComponent {
   }
 
   onSubmit() {
-    const token = sessionStorage.getItem('auth-token');
-
-    if (this.companyForm.valid && token) {
+    if (this.companyForm.valid) {
       const payload = this.companyForm.value;
 
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+      this.companyService.createCompany(payload).subscribe({
+        next: () => {
+          this.toastService.success('Empresa criada com sucesso!');
+          this.close();
+        },
+        error: () => this.toastService.error('Erro ao criar empresa'),
       });
-
-      this.http
-        .post('http://localhost:8080/api/companies', payload, { headers })
-        .subscribe({
-          next: () => {
-            this.toastService.success('Empresa criada com sucesso!');
-            this.close();
-          },
-          error: () => this.toastService.error('Erro ao criar empresa'),
-        });
     } else {
-      console.warn('Form inválido ou token não encontrado!');
+      console.warn('Formulário inválido!');
     }
   }
 
