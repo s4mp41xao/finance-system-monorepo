@@ -3,32 +3,31 @@
   <div class="card">
     <div class="card-head">Company</div>
     <div class="card-body">
-      <div class="company-table">
-        <table class="table">
+      <div class="company-list">
+        @if (companies.length === 0) {
+        <p class="no-companies">Nenhuma empresa cadastrada.</p>
+        } @else {
+        <table class="company-table">
           <thead>
-            <tr>
-              <th>Nome</th>
-              <th>CNPJ</th>
-              <th>Data de Cadastro</th>
-              <th>Ações</th>
+            <tr class="table-header">
+              <th class="table-cell">Nome</th>
+              <th class="table-cell">CNPJ</th>
+              <th class="table-cell">Data de Criação</th>
             </tr>
           </thead>
-
           <tbody>
-            <tr>
-              @for (company of companies; track $index) {
-
-              <td>{{ company.name }}</td>
-              <td>{{ company.cnpj }}</td>
-              <td>{{ company.createdAt | date : "dd/MM/yyyy" }}</td>
-              }
-              <td class="actions">
-                <!-- <button (click)="editCompany(company)">Editar</button> -->
-                <!-- <button (click)="deleteCompany(company.id)">Excluir</button> -->
+            @for (company of companies; track company.id) {
+            <tr class="table-row">
+              <td class="table-cell">{{ company.name }}</td>
+              <td class="table-cell">{{ company.cnpj }}</td>
+              <td class="table-cell">
+                {{ company.creationDate | date : "short" }}
               </td>
             </tr>
+            }
           </tbody>
         </table>
+        }
       </div>
 
       <!-- <ng-icon name="mynaX" class="close-icon"></ng-icon> -->

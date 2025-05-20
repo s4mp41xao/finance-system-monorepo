@@ -3,4 +3,5 @@ export interface Company {
   name: string;
   cnpj: string;
   creationDate: string;
+  userId: number;
 }

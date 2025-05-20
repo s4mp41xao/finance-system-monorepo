@@ -117,3 +117,32 @@
   color: #000;
   border: 1px solid #263238;
 }
+
+.company-list {
+  margin-top: 1rem;
+}
+
+.no-companies {
+  font-style: italic;
+  color: #777;
+}
+
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.table-header {
+  background-color: #f2f2f2;
+}
+
+.table-row:hover {
+  background-color: #f9f9f9;
+}
+
+.table-cell {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}

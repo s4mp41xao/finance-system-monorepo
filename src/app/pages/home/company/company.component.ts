@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -10,6 +10,7 @@ import { NgIcon } from '@ng-icons/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyService } from './company.service';
+import { Company } from './company.model';
 
 @Component({
   selector: 'app-company',
@@ -18,7 +19,8 @@ import { CompanyService } from './company.service';
   templateUrl: './company.component.html',
   styleUrl: './company.component.css',
 })
-export class CompanyComponent {
+export class CompanyComponent implements OnInit {
+  companies: Company[] = [];
   showModal = false;
   @Output() closed = new EventEmitter<void>();
   companyForm: FormGroup;
@@ -35,6 +37,17 @@ export class CompanyComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.loadCompanies();
+  }
+
+  loadCompanies() {
+    this.companyService.getCompaniesByUser().subscribe({
+      next: (data) => (this.companies = data),
+      error: (error) => console.error('Erro ao carregar empresas', error),
+    });
+  }
+
   onSubmit() {
     if (this.companyForm.valid) {
       const payload = this.companyForm.value;
@@ -42,6 +55,8 @@ export class CompanyComponent {
       this.companyService.createCompany(payload).subscribe({
         next: () => {
           this.toastService.success('Empresa criada com sucesso!');
+          this.loadCompanies();
+          this.companyForm.reset();
           this.close();
         },
         error: () => this.toastService.error('Erro ao criar empresa'),

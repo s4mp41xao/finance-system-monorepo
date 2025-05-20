@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Company } from './company.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,26 +12,31 @@ export class CompanyService {
 
   constructor(private http: HttpClient) {}
 
-  createCompany(payload: { name: string; cnpj: string }): Observable<any> {
-    const token = sessionStorage.getItem('auth-token');
+  // private getAuthHeaders(): HttpHeaders {
+  //   const token = sessionStorage.getItem('auth-token');
+  //   if (!token) {
+  //     throw new Error('Token not found');
+  //   }
 
-    if (!token) {
-      throw new Error('Token not found');
-    }
+  //   return new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     Authorization: `Bearer ${token}`,
+  //   });
+  // }
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    });
+  createCompany(payload: { name: string; cnpj: string }): Observable<Company> {
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json',
+    // });
 
-    return this.http.post(this.apiUrl, payload, { headers });
+    // const headers = this.getAuthHeaders();
+    // console.log(this.getAuthHeaders);
+
+    return this.http.post<Company>(this.apiUrl, payload);
   }
 
-  getCompaniesByUser(): Observable<any[]> {
-    const token = sessionStorage.getItem('auth-token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-    return this.http.get<any[]>(this.apiUrl, { headers });
+  getCompaniesByUser(): Observable<Company[]> {
+    // const headers = this.getAuthHeaders();
+    return this.http.get<Company[]>(this.apiUrl);
   }
 }
