@@ -28,8 +28,18 @@
           routerLinkActive="router-link-active"
           class="sidenav-nav-link"
         >
-          <ng-icon class="sidenav-link-icon" name="mynaDollarCircle" />
+          <ng-icon class="sidenav-link-icon" name="tdesignMoneyFilled" />
           <span class="sidenav-link-text" *ngIf="isExpanded">Despesas</span>
+        </a>
+      </li>
+      <li class="sidenav-nav-item">
+        <a
+          [routerLink]="['/company']"
+          routerLinkActive="router-link-active"
+          class="sidenav-nav-link"
+        >
+          <ng-icon class="sidenav-link-icon" name="mynaBuildingOne" />
+          <span class="sidenav-link-text" *ngIf="isExpanded">Empresas</span>
         </a>
       </li>
     </ul>

@@ -14,8 +14,11 @@
   font-weight: 600;
 }
 
+.card-content {
+}
+
 .card-body {
-  padding: 1rem 1.5rem;
+  /* padding: 1rem 1.5rem; */
 }
 
 .body-trimmed {

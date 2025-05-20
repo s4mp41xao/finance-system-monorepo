@@ -4,7 +4,22 @@ import {
   mynaHome,
   mynaChevronRight,
   mynaChevronLeft,
+  mynaBuildingOne,
+  mynaX,
+  mynaBuilding,
+  mynaListNumber,
+  mynaTrashOne,
+  mynaTrash,
 } from '@ng-icons/mynaui/outline';
+
+import {
+  tdesignMoneyFilled,
+  tdesignFactCheck,
+  tdesignAdd,
+  tdesignAddCircle,
+  tdesignAddCircleFilled,
+} from '@ng-icons/tdesign-icons';
+
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 @Component({
@@ -16,6 +31,17 @@ import { RouterOutlet } from '@angular/router';
       mynaDollarCircle,
       mynaChevronRight,
       mynaChevronLeft,
+      mynaBuildingOne,
+      mynaX,
+      mynaBuilding,
+      mynaListNumber,
+      tdesignMoneyFilled,
+      tdesignFactCheck,
+      tdesignAdd,
+      tdesignAddCircle,
+      tdesignAddCircleFilled,
+      mynaTrashOne,
+      mynaTrash,
     }),
   ],
   templateUrl: './app.component.html',

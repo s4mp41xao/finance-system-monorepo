@@ -7,6 +7,7 @@ import { EmptyComponent } from './components/empty/empty.component';
 import { AuthRedirectGuard } from './services/auth-redirect.guard';
 import { ExpensesComponent } from './pages/home/expenses/expenses.component';
 import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
+import { CompanyComponent } from './pages/home/company/company.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,7 @@ export const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'expenses', component: ExpensesComponent },
+      { path: 'company', component: CompanyComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
   },
