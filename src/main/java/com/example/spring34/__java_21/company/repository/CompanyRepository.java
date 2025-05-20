@@ -1,8 +1,10 @@
 package com.example.spring34.__java_21.company.repository;
 
 import com.example.spring34.__java_21.company.model.CompanyModel;
+import com.example.spring34.__java_21.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -30,6 +32,8 @@ public interface CompanyRepository extends JpaRepository<CompanyModel, Long> {
      * @param userId    the ID of the user (owner)
      */
     void deleteByIdAndUserId(Long companyId, Long userId);
+
+    List<CompanyModel> findByUser(User user);
 
     boolean existsByCnpjAndUserId(String cnpj, Long userId);
 }

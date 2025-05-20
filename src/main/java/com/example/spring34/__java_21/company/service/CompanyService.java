@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CompanyService {
@@ -54,6 +56,19 @@ public class CompanyService {
                 savedCompanyModel.getCreationDate(),
                 user.getId());
     }
+
+
+    public List<CompanyResponse> getCompaniesByUser(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        return companyRepository.findByUser(user)
+                .stream()
+                .map(CompanyResponse::fromEntity)
+                .toList();
+    }
+
+
 
     /**
      * Deletes a company by its ID if it belongs to the authenticated user.

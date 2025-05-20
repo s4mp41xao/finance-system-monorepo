@@ -31,6 +31,11 @@ public class CompanyController {
                 companyService.createCompany(request, authentication.getName()));
     }
 
+    @GetMapping
+    public ResponseEntity<?> getCompaniesByUser(Authentication authentication) {
+        return ResponseEntity.ok(companyService.getCompaniesByUser(authentication.getName()));
+    }
+
     /**
      * Endpoint to delete a company by its ID.
      *
