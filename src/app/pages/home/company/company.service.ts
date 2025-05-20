@@ -19,4 +19,8 @@ export class CompanyService {
   getCompaniesByUser(): Observable<Company[]> {
     return this.http.get<Company[]>(this.apiUrl);
   }
+
+  deleteCompany(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
+  }
 }

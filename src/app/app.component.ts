@@ -8,6 +8,8 @@ import {
   mynaX,
   mynaBuilding,
   mynaListNumber,
+  mynaTrashOne,
+  mynaTrash,
 } from '@ng-icons/mynaui/outline';
 
 import {
@@ -38,6 +40,8 @@ import { RouterOutlet } from '@angular/router';
       tdesignAdd,
       tdesignAddCircle,
       tdesignAddCircleFilled,
+      mynaTrashOne,
+      mynaTrash,
     }),
   ],
   templateUrl: './app.component.html',

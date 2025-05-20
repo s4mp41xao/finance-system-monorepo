@@ -67,6 +67,18 @@ export class CompanyComponent implements OnInit {
     }
   }
 
+  deleteCompany(id: number) {
+    if (confirm('Tem certeza que deseja excluir esta empresa?')) {
+      this.companyService.deleteCompany(id).subscribe({
+        next: () => {
+          this.toastService.success('Empresa excluída com sucesso!');
+          this.loadCompanies(); // Recarrega a lista após exclusão
+        },
+        error: () => this.toastService.error('Erro ao excluir empresa'),
+      });
+    }
+  }
+
   close() {
     this.showModal = false;
     this.closed.emit();

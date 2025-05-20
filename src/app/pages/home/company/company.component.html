@@ -23,6 +23,7 @@
               <th class="table-cell">Nome da empresa</th>
               <th class="table-cell">CNPJ</th>
               <th class="table-cell">Data de Criação</th>
+              <th class="table-cell-delete-icon">Ações</th>
             </tr>
           </thead>
           <tbody>
@@ -32,6 +33,13 @@
               <td class="table-cell">{{ company.cnpj }}</td>
               <td class="table-cell">
                 {{ company.creationDate | date : "short" }}
+              </td>
+              <td class="table-cell-delete-icon">
+                <ng-icon
+                  name="mynaTrashOne"
+                  class="delete-icon"
+                  (click)="deleteCompany(company.id)"
+                ></ng-icon>
               </td>
             </tr>
             }

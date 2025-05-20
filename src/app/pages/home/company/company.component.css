@@ -35,6 +35,11 @@
   margin: 0.8rem;
   font-size: 30px;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.add-company:hover {
+  transform: scale(1.2);
 }
 
 .modal-body {
@@ -158,4 +163,22 @@
   /* border: 1px solid #ccc; */
   padding: 8px;
   text-align: left;
+}
+
+.table-cell-delete-icon {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #edf1f7;
+}
+
+.delete-icon {
+  text-align: center;
+  font-size: 22px;
+  cursor: pointer;
+  color: #d32f2f;
+  transition: transform 0.2s ease;
+}
+
+.delete-icon:hover {
+  transform: scale(1.2);
 }
