@@ -130,6 +130,7 @@
 }
 
 .no-companies {
+  padding: 8px;
   font-style: italic;
   color: #777;
 }
@@ -158,16 +159,4 @@
   padding: 8px;
   text-align: center;
   border: 1px solid #edf1f7;
-}
-
-.delete-icon {
-  text-align: center;
-  font-size: 22px;
-  cursor: pointer;
-  color: #d32f2f;
-  transition: transform 0.2s ease;
-}
-
-.delete-icon:hover {
-  transform: scale(1.2);
 }
