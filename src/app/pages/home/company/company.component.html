@@ -1,13 +1,13 @@
 <div class="content">
   <div class="content-header">
     <h1>Registro de empresas</h1>
-    <ng-icon
-      [name]="isHovering ? 'tdesignAddCircleFilled' : 'tdesignAddCircle'"
-      class="add-company"
-      (mouseenter)="isHovering = true"
-      (mouseleave)="isHovering = false"
-      (click)="openModal()"
-    ></ng-icon>
+
+    <app-hover-icon-button
+      [iconDefault]="'tdesignAddCircle'"
+      [iconHover]="'tdesignAddCircleFilled'"
+      [cssClass]="'add-company'"
+      (clicked)="openModal()"
+    ></app-hover-icon-button>
   </div>
 
   <div class="card">
@@ -35,11 +35,12 @@
                 {{ company.creationDate | date : "short" }}
               </td>
               <td class="table-cell-delete-icon">
-                <ng-icon
-                  name="mynaTrashOne"
-                  class="delete-icon"
-                  (click)="deleteCompany(company.id)"
-                ></ng-icon>
+                <app-hover-icon-button
+                  [iconDefault]="'mynaTrashOne'"
+                  [iconHover]="'mynaTrash'"
+                  [cssClass]="'delete-icon'"
+                  (clicked)="deleteCompany(company.id)"
+                ></app-hover-icon-button>
               </td>
             </tr>
             }

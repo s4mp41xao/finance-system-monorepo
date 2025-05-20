@@ -31,17 +31,6 @@
   align-items: center;
 }
 
-.add-company {
-  margin: 0.8rem;
-  font-size: 30px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.add-company:hover {
-  transform: scale(1.2);
-}
-
 .modal-body {
   /* padding: 0.5rem; */
 }

@@ -1,0 +1,7 @@
+<ng-icon
+  [name]="isHovering ? iconHover : iconDefault"
+  [class]="cssClass"
+  (mouseenter)="isHovering = true"
+  (mouseleave)="isHovering = false"
+  (click)="handleClick()"
+></ng-icon>

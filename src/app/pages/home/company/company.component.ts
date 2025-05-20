@@ -11,11 +11,17 @@ import { ChangeDetectorRef } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyService } from './company.service';
 import { Company } from './company.model';
+import { HoverIconButtonComponent } from '../../../components/hover-icon-button/hover-icon-button.component';
 
 @Component({
   selector: 'app-company',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NgIcon],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    NgIcon,
+    HoverIconButtonComponent,
+  ],
   templateUrl: './company.component.html',
   styleUrl: './company.component.css',
 })
