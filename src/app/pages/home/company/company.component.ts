@@ -20,6 +20,7 @@ import { Company } from './company.model';
   styleUrl: './company.component.css',
 })
 export class CompanyComponent implements OnInit {
+  isHovering = false;
   companies: Company[] = [];
   showModal = false;
   @Output() closed = new EventEmitter<void>();

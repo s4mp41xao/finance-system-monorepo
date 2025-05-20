@@ -10,7 +10,13 @@ import {
   mynaListNumber,
 } from '@ng-icons/mynaui/outline';
 
-import { tdesignMoneyFilled, tdesignFactCheck } from '@ng-icons/tdesign-icons';
+import {
+  tdesignMoneyFilled,
+  tdesignFactCheck,
+  tdesignAdd,
+  tdesignAddCircle,
+  tdesignAddCircleFilled,
+} from '@ng-icons/tdesign-icons';
 
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
@@ -29,6 +35,9 @@ import { RouterOutlet } from '@angular/router';
       mynaListNumber,
       tdesignMoneyFilled,
       tdesignFactCheck,
+      tdesignAdd,
+      tdesignAddCircle,
+      tdesignAddCircleFilled,
     }),
   ],
   templateUrl: './app.component.html',
