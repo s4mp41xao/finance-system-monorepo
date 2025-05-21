@@ -1,7 +1,7 @@
 package com.example.spring34.__java_21.company.repository;
 
 import com.example.spring34.__java_21.company.model.CompanyModel;
-import com.example.spring34.__java_21.domain.user.User;
+import com.example.spring34.__java_21.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

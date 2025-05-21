@@ -1,11 +1,11 @@
-package com.example.spring34.__java_21.controllers;
+package com.example.spring34.__java_21.user.controllers;
 
-import com.example.spring34.__java_21.domain.user.User;
-import com.example.spring34.__java_21.dto.LoginRequestDTO;
-import com.example.spring34.__java_21.dto.RegisterRequestDTO;
-import com.example.spring34.__java_21.dto.ResponseDTO;
-import com.example.spring34.__java_21.infra.security.TokenService;
-import com.example.spring34.__java_21.repositories.UserRepository;
+import com.example.spring34.__java_21.user.model.User;
+import com.example.spring34.__java_21.user.dto.LoginRequestDTO;
+import com.example.spring34.__java_21.user.dto.RegisterRequestDTO;
+import com.example.spring34.__java_21.user.dto.ResponseDTO;
+import com.example.spring34.__java_21.user.infra.security.TokenService;
+import com.example.spring34.__java_21.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,4 +1,4 @@
-package com.example.spring34.__java_21.infra.security;
+package com.example.spring34.__java_21.user.infra.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

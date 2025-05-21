@@ -1,4 +1,4 @@
-package com.example.spring34.__java_21.controllers;
+package com.example.spring34.__java_21.user.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

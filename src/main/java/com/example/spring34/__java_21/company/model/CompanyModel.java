@@ -1,6 +1,6 @@
 package com.example.spring34.__java_21.company.model;
 
-import com.example.spring34.__java_21.domain.user.User;
+import com.example.spring34.__java_21.user.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

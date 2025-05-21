@@ -1,10 +1,10 @@
-package com.example.spring34.__java_21.infra.security;
+package com.example.spring34.__java_21.user.infra.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.example.spring34.__java_21.domain.user.User;
+import com.example.spring34.__java_21.user.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

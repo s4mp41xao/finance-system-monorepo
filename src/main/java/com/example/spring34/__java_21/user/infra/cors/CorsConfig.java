@@ -1,4 +1,4 @@
-package com.example.spring34.__java_21.infra.cors;
+package com.example.spring34.__java_21.user.infra.cors;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

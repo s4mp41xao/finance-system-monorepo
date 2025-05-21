@@ -1,9 +1,9 @@
-package com.example.spring34.__java_21.infra.security;
+package com.example.spring34.__java_21.user.infra.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.example.spring34.__java_21.domain.user.User;
-import com.example.spring34.__java_21.repositories.UserRepository;
+import com.example.spring34.__java_21.user.model.User;
+import com.example.spring34.__java_21.user.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

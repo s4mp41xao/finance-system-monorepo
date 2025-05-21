@@ -1,4 +1,4 @@
-package com.example.spring34.__java_21.domain.user;
+package com.example.spring34.__java_21.user.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
