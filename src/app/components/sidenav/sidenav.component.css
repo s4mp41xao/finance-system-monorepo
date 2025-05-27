@@ -28,6 +28,7 @@
 .sidenav-nav-item {
   width: 100%;
   margin-bottom: 0.65rem;
+  border-radius: 0.625rem;
 }
 
 /* item */
@@ -88,6 +89,53 @@
 }
 
 .router-link-active {
+  background-color: #fff;
+  color: #000;
+}
+
+.sub-level-menu {
+  /* display: flex; */
+  /* align-items: center; */
+  /* padding: 8px; */
+  cursor: pointer;
+}
+
+.sublevel-nav {
+  list-style: none;
+  margin: 0 10px;
+}
+
+.sublevel-nav-item {
+  /* align-items: center; */
+  /* display: flex; */
+}
+
+.sublevel-nav-link {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  height: 3rem;
+  color: #898989;
+  text-decoration: none;
+  border-radius: 0.625rem;
+  transition: all 0.3s ease;
+}
+
+.sublevel-link-icon {
+  font-size: 6px;
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 0.5rem;
+  text-align: center;
+}
+
+.sublevel-link-text {
+  margin-left: 0.8rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.sublevel-nav-link:hover {
   background-color: #fff;
   color: #000;
 }
