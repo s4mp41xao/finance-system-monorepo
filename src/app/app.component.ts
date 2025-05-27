@@ -1,4 +1,5 @@
 import { NgIcon, provideIcons } from '@ng-icons/core';
+import { mynaCircleSolid } from '@ng-icons/mynaui/solid';
 import {
   mynaDollarCircle,
   mynaHome,
@@ -42,6 +43,7 @@ import { RouterOutlet } from '@angular/router';
       tdesignAddCircleFilled,
       mynaTrashOne,
       mynaTrash,
+      mynaCircleSolid,
     }),
   ],
   templateUrl: './app.component.html',
