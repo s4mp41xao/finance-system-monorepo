@@ -38,9 +38,43 @@
           routerLinkActive="router-link-active"
           class="sidenav-nav-link"
         >
-          <ng-icon class="sidenav-link-icon" name="mynaBuildingOne" />
+          <ng-icon
+            class="sidenav-link-icon"
+            name="mynaBuildingOne"
+            (click)="toggleSidenav()"
+          />
           <span class="sidenav-link-text" *ngIf="isExpanded">Empresas</span>
         </a>
+
+        <div class="sub-level-menu" *ngIf="isExpanded">
+          <ul class="sublevel-nav">
+            <li class="sublevel-nav-item">
+              <a
+                [routerLink]="['/company/create']"
+                routerLinkActive="router-link-active"
+                class="sublevel-nav-link"
+              >
+                <ng-icon class="sublevel-link-icon" name="mynaCircleSolid" />
+                <span class="sublevel-link-text" *ngIf="isExpanded"
+                  >Nova Empresa</span
+                >
+              </a>
+            </li>
+
+            <li class="sublevel-nav-item">
+              <a
+                [routerLink]="['/company/list']"
+                routerLinkActive="router-link-active"
+                class="sublevel-nav-link"
+              >
+                <ng-icon class="sublevel-link-icon" name="mynaCircleSolid" />
+                <span class="sublevel-link-text" *ngIf="isExpanded"
+                  >Listar Empresas</span
+                >
+              </a>
+            </li>
+          </ul>
+        </div>
       </li>
     </ul>
   </div>
