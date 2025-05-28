@@ -8,6 +8,7 @@ import { AuthRedirectGuard } from './services/auth-redirect.guard';
 import { ExpensesComponent } from './pages/home/expenses/expenses.component';
 import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
 import { CompanyComponent } from './pages/home/company/company.component';
+import { BankAccountsComponent } from './pages/home/bank-accounts/bank-accounts.component';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,7 @@ export const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'expenses', component: ExpensesComponent },
       { path: 'company', component: CompanyComponent },
+      { path: 'bank-accounts', component: BankAccountsComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
   },
