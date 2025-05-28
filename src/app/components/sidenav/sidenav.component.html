@@ -37,12 +37,9 @@
           [routerLink]="['/company']"
           routerLinkActive="router-link-active"
           class="sidenav-nav-link"
+          (click)="toggleSidenav()"
         >
-          <ng-icon
-            class="sidenav-link-icon"
-            name="mynaBuildingOne"
-            (click)="toggleSidenav()"
-          />
+          <ng-icon class="sidenav-link-icon" name="mynaBuildingOne" />
           <span class="sidenav-link-text" *ngIf="isExpanded">Empresas</span>
         </a>
 
@@ -50,7 +47,7 @@
           <ul class="sublevel-nav">
             <li class="sublevel-nav-item">
               <a
-                [routerLink]="['/company/create']"
+                [routerLink]="['/bank-accounts']"
                 routerLinkActive="router-link-active"
                 class="sublevel-nav-link"
               >
