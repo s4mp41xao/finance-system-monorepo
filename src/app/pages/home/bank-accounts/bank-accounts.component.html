@@ -1,0 +1,50 @@
+<h2>Contas Bancárias</h2>
+
+<form (ngSubmit)="createAccount()">
+  <input
+    [(ngModel)]="newAccount.bankName"
+    name="bankName"
+    placeholder="Banco"
+    required
+  />
+  <input
+    [(ngModel)]="newAccount.agency"
+    name="agency"
+    placeholder="Agência"
+    required
+  />
+  <input
+    [(ngModel)]="newAccount.accountNumber"
+    name="accountNumber"
+    placeholder="Conta"
+    required
+  />
+  <select [(ngModel)]="newAccount.accountType" name="accountType">
+    <option value="CHECKING">Conta Corrente</option>
+    <option value="SAVING">Poupança</option>
+  </select>
+  <input
+    type="number"
+    [(ngModel)]="newAccount.initialBalance"
+    name="initialBalance"
+    placeholder="Saldo Inicial"
+    required
+  />
+  <input
+    type="number"
+    [(ngModel)]="newAccount.currentBalance"
+    name="currentBalance"
+    placeholder="Saldo Atual"
+    required
+  />
+  <button type="submit">Adicionar Conta</button>
+</form>
+
+<ul>
+  @for (account of bankAccounts; track account.id) {
+  <li>
+    {{ account.bankName }} - {{ account.accountNumber }}
+    <button (click)="deleteAccount(account.id!)">Excluir</button>
+  </li>
+  }
+</ul>
