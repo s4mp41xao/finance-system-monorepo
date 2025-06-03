@@ -1,6 +1,13 @@
 <h2>Contas Bancárias</h2>
 
-<form (ngSubmit)="createAccount()">
+<form (ngSubmit)="createAccount()" class="account-form">
+  <select [(ngModel)]="newAccount.companyId" name="companyId" required>
+    <option [ngValue]="null" disabled selected>Selecione uma empresa</option>
+    <option *ngFor="let company of companies" [ngValue]="company.id">
+      {{ company.name }}
+    </option>
+  </select>
+
   <input
     [(ngModel)]="newAccount.bankName"
     name="bankName"

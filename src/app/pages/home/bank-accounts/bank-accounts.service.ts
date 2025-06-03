@@ -1,6 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Company } from '../company/company.model';
+import { CompanyService } from '../company/company.service';
+
+// export interface Company {
+//   id: number;
+//   name: string;
+// }
 
 export interface BankAccountDTO {
   id?: number;
@@ -17,7 +24,12 @@ export interface BankAccountDTO {
 @Injectable({ providedIn: 'root' })
 export class BankAccountService {
   private http = inject(HttpClient);
+  private companyService = inject(CompanyService);
   private baseUrl = 'http://localhost:8080/api/bank-accounts';
+
+  getCompanies(): Observable<Company[]> {
+    return this.companyService.getCompaniesByUser();
+  }
 
   create(companyId: number, dto: BankAccountDTO): Observable<BankAccountDTO> {
     return this.http.post<BankAccountDTO>(
@@ -32,7 +44,7 @@ export class BankAccountService {
     );
   }
 
-  delete(id: number): Observable<void> {
+  deleteAccount(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 }
