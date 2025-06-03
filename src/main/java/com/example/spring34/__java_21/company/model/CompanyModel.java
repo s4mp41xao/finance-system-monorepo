@@ -1,5 +1,6 @@
 package com.example.spring34.__java_21.company.model;
 
+import com.example.spring34.__java_21.bankAccount.model.BankAccount;
 import com.example.spring34.__java_21.user.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "companies")
@@ -34,6 +37,9 @@ public class CompanyModel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user; // The user who owns this company
+
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<BankAccount> bankAccounts = new ArrayList<>();
 
     /**
      * Automatically sets the creation date before the entity is persisted.

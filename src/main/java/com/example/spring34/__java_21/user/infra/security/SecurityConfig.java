@@ -51,6 +51,8 @@ public class SecurityConfig {
                                 // Require authentication for all company-related endpoints
                                 .requestMatchers("/api/companies/**").authenticated()
 
+                                .requestMatchers("/api/bank-accounts/company/**").authenticated()
+
                                 // Require authentication for any other request
                                 .anyRequest().authenticated()
                 )
