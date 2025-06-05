@@ -1,21 +1,51 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BankAccountService, BankAccountDTO } from './bank-accounts.service';
-import { FormsModule } from '@angular/forms';
+import { CompanyService } from '../company/company.service';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { Company } from '../company/company.model';
+import { NgIcon } from '@ng-icons/core';
+import { HoverIconButtonComponent } from '../../../components/hover-icon-button/hover-icon-button.component';
 
 @Component({
   selector: 'app-bank-accounts',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgIcon,
+    HoverIconButtonComponent,
+  ],
   templateUrl: './bank-accounts.component.html',
+  styleUrl: './bank-accounts.component.css',
 })
 export class BankAccountsComponent implements OnInit {
-  private service = inject(BankAccountService);
+  private bankAccountService = inject(BankAccountService);
+  private companyService = inject(CompanyService);
+  private fb = inject(FormBuilder);
+
   bankAccounts: BankAccountDTO[] = [];
   companies: Company[] = [];
   newAccount: BankAccountDTO = this.emptyAccount();
-  // companyId = 1; // ajuste conforme necessário
+  showModal = false;
+  bankAccountForm: FormGroup;
+
+  constructor(private cdr: ChangeDetectorRef) {
+    this.bankAccountForm = this.fb.group({
+      bankName: ['', Validators.required],
+      agency: ['', Validators.required],
+      accountNumber: ['', Validators.required],
+      accountType: ['CHECKING', Validators.required],
+      initialBalance: [0, Validators.required],
+    });
+  }
 
   ngOnInit(): void {
     this.loadAccounts();
@@ -23,7 +53,7 @@ export class BankAccountsComponent implements OnInit {
   }
 
   loadCompanies(): void {
-    this.service.getCompanies().subscribe({
+    this.bankAccountService.getCompanies().subscribe({
       next: (companies) => {
         this.companies = companies;
         if (companies.length > 0) {
@@ -38,14 +68,14 @@ export class BankAccountsComponent implements OnInit {
 
   loadAccounts(): void {
     const selectedCompanyId = this.newAccount.companyId;
-    this.service
+    this.bankAccountService
       .getAll(selectedCompanyId)
       .subscribe((accounts) => (this.bankAccounts = accounts));
   }
 
   createAccount(): void {
-    console.log('Empresa selecionada:', this.newAccount.companyId);
-    this.service
+    // console.log('Empresa selecionada:', this.newAccount.companyId);
+    this.bankAccountService
       .create(this.newAccount.companyId, this.newAccount)
       .subscribe(() => {
         this.loadAccounts();
@@ -54,7 +84,18 @@ export class BankAccountsComponent implements OnInit {
   }
 
   deleteAccount(id: number): void {
-    this.service.deleteAccount(id).subscribe(() => this.loadAccounts());
+    this.bankAccountService
+      .deleteAccount(id)
+      .subscribe(() => this.loadAccounts());
+  }
+
+  close(): void {
+    this.showModal = false;
+  }
+
+  openModal() {
+    this.showModal = true;
+    this.cdr.detectChanges();
   }
 
   private emptyAccount(): BankAccountDTO {

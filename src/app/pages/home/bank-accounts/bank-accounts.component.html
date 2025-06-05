@@ -1,57 +1,269 @@
 <h2>Contas Bancárias</h2>
 
-<form (ngSubmit)="createAccount()" class="account-form">
-  <select [(ngModel)]="newAccount.companyId" name="companyId" required>
-    <option [ngValue]="null" disabled selected>Selecione uma empresa</option>
-    <option *ngFor="let company of companies" [ngValue]="company.id">
-      {{ company.name }}
-    </option>
-  </select>
+<div class="content">
+  <div class="content-header">
+    <h1>Registro de contas bancárias</h1>
+    <app-hover-icon-button
+      [iconDefault]="'tdesignAddCircle'"
+      [iconHover]="'tdesignAddCircleFilled'"
+      [cssClass]="'add-company'"
+      (clicked)="openModal()"
+    ></app-hover-icon-button>
+  </div>
 
-  <input
-    [(ngModel)]="newAccount.bankName"
-    name="bankName"
-    placeholder="Banco"
-    required
-  />
-  <input
-    [(ngModel)]="newAccount.agency"
-    name="agency"
-    placeholder="Agência"
-    required
-  />
-  <input
-    [(ngModel)]="newAccount.accountNumber"
-    name="accountNumber"
-    placeholder="Conta"
-    required
-  />
-  <select [(ngModel)]="newAccount.accountType" name="accountType">
-    <option value="CHECKING">Conta Corrente</option>
-    <option value="SAVING">Poupança</option>
-  </select>
-  <input
-    type="number"
-    [(ngModel)]="newAccount.initialBalance"
-    name="initialBalance"
-    placeholder="Saldo Inicial"
-    required
-  />
-  <input
-    type="number"
-    [(ngModel)]="newAccount.currentBalance"
-    name="currentBalance"
-    placeholder="Saldo Atual"
-    required
-  />
-  <button type="submit">Adicionar Conta</button>
-</form>
+  <div class="card">
+    <!-- <div class="card-head">Empresas</div> -->
+    <div class="card-body">
+      <div class="company-list">
+        @if (bankAccounts.length === 0) {
+        <p class="no-companies">Nenhuma conta bancária cadastrada.</p>
+        } @else {
+        <table class="company-table">
+          <thead>
+            <tr class="table-header">
+              <th class="table-cell">Nome da empresa</th>
+              <th class="table-cell">
+                <div class="alert alert-success" role="alert">
+                  <h4 class="alert-heading"></h4>
+                  <p>Banco</p>
+                  <p class="mb-0"></p>
+                </div>
+              </th>
+              <th class="table-cell">Agência</th>
+              <th class="table-cell">Número da Conta</th>
+              <th class="table-cell">Tipo de Conta</th>
+              <th class="table-cell">Saldo Inicial</th>
+              <th class="tablecell">Saldo Atual</th>
+              <th class="table-cell">Data de Criação</th>
+              <th class="table-cell-delete-icon">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (account of bankAccounts; track account.id) {
 
-<ul>
-  @for (account of bankAccounts; track account.id) {
-  <li>
-    {{ account.bankName }} - {{ account.accountNumber }}
-    <button (click)="deleteAccount(account.id!)">Excluir</button>
-  </li>
-  }
-</ul>
+            <tr class="table-row">
+              <td class="table-cell">{{ account.companyId }}</td>
+              <td class="table-cell">{{ account.bankName }}</td>
+              <td class="table-cell">{{ account.agency }}</td>
+              <td class="table-cell">{{ account.accountNumber }}</td>
+              <td class="table-cell">
+                {{
+                  account.accountType === "CHECKING"
+                    ? "Conta Corrente"
+                    : "Poupança"
+                }}
+              </td>
+
+              <td class="table-cell">
+                {{ account.initialBalance | currency : "BRL" : "symbol" }}
+              </td>
+
+              <td class="table-cell">
+                {{ account.currentBalance | currency : "BRL" : "symbol" }}
+              </td>
+
+              <td class="table-cell">
+                {{ account.creationDate | date : "short" }}
+              </td>
+              <td class="table-cell-delete-icon">
+                <app-hover-icon-button
+                  [iconDefault]="'mynaTrashOne'"
+                  [iconHover]="'mynaTrash'"
+                  [cssClass]="'delete-icon'"
+                  (clicked)="deleteAccount(account.id!)"
+                ></app-hover-icon-button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        }
+      </div>
+
+      <div *ngIf="showModal" class="modal-backdrop" (click)="close()"></div>
+
+      <div *ngIf="showModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Cadastro de Conta Bancária</h2>
+
+            <button class="close-button" (click)="close()">
+              <ng-icon name="mynaX" class="icon close-icon"></ng-icon>
+            </button>
+          </div>
+
+          <form class="form-content" [formGroup]="bankAccountForm">
+            <h4 class="form-header">Complete os campos abaixo:</h4>
+
+            <div class="modal-body">
+              <form
+                class="form-content"
+                (ngSubmit)="createAccount()"
+                class="account-form"
+              >
+                <div class="form-content-item">
+                  <label class="form-content-item-text">Empresa</label>
+
+                  <div class="input-content">
+                    <div class="form-icon">
+                      <ng-icon
+                        name="mynaBuilding"
+                        class="company-icon"
+                      ></ng-icon>
+                    </div>
+
+                    <select
+                      [(ngModel)]="newAccount.companyId"
+                      name="companyId"
+                      required
+                      class="form-content-item-text"
+                      class="input-field"
+                    >
+                      <option [ngValue]="null" disabled selected>
+                        Selecione uma empresa
+                      </option>
+                      <option
+                        *ngFor="let company of companies"
+                        [ngValue]="company.id"
+                      >
+                        {{ company.name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-content-item">
+                  <label class="form-content-item-text">Banco:</label>
+
+                  <div class="input-content">
+                    <div class="form-icon">
+                      <ng-icon
+                        name="mynaBuilding"
+                        class="company-icon"
+                      ></ng-icon>
+                    </div>
+                    <input
+                      class="input-field"
+                      [(ngModel)]="newAccount.bankName"
+                      name="bankName"
+                      placeholder="Bradesco"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-content-item">
+                  <label class="form-content-item-text">Agência</label>
+                  <div class="input-content">
+                    <div class="form-icon">
+                      <ng-icon
+                        name="mynaBuilding"
+                        class="company-icon"
+                      ></ng-icon>
+                    </div>
+                    <input
+                      class="input-field"
+                      [(ngModel)]="newAccount.agency"
+                      name="agency"
+                      placeholder="Ex: 0001"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-content-item">
+                  <label class="form-content-item-text">Conta</label>
+                  <div class="input-content">
+                    <div class="form-icon">
+                      <ng-icon
+                        name="mynaBuilding"
+                        class="company-icon"
+                      ></ng-icon>
+                    </div>
+
+                    <input
+                      class="input-field"
+                      [(ngModel)]="newAccount.accountNumber"
+                      name="accountNumber"
+                      placeholder="Ex: 7299-0"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-content-item">
+                  <label class="form-content-item-text">Tipo da Conta</label>
+                  <div class="input-content">
+                    <div class="form-icon">
+                      <ng-icon
+                        name="mynaBuilding"
+                        class="company-icon"
+                      ></ng-icon>
+                    </div>
+
+                    <select
+                      [(ngModel)]="newAccount.accountType"
+                      name="accountType"
+                      class="input-field"
+                    >
+                      <option value="CHECKING">Conta Corrente</option>
+                      <option value="SAVING">Poupança</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-content-item">
+                  <label class="form-content-item-text">Saldo Inicial</label>
+                  <div class="input-content">
+                    <div class="form-icon">
+                      <ng-icon
+                        name="mynaBuilding"
+                        class="company-icon"
+                      ></ng-icon>
+                    </div>
+
+                    <input
+                      class="input-field"
+                      type="number"
+                      [(ngModel)]="newAccount.initialBalance"
+                      name="initialBalance"
+                      placeholder="Saldo Inicial"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-content-item">
+                  <label class="form-content-item-text">Saldo Inicial</label>
+                  <div class="input-content">
+                    <div class="form-icon">
+                      <ng-icon
+                        name="mynaBuilding"
+                        class="company-icon"
+                      ></ng-icon>
+                    </div>
+
+                    <input
+                      class="input-field"
+                      type="number"
+                      [(ngModel)]="newAccount.currentBalance"
+                      name="currentBalance"
+                      placeholder="Saldo Atual"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <button type="submit">Adicionar Conta</button>
+              </form>
+
+              <div class="button-container">
+                <button class="button-save" type="submit">Salvar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
