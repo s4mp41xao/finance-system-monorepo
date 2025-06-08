@@ -11,6 +11,7 @@ import {
   mynaListNumber,
   mynaTrashOne,
   mynaTrash,
+  mynaBank,
 } from '@ng-icons/mynaui/outline';
 
 import {
@@ -19,6 +20,12 @@ import {
   tdesignAdd,
   tdesignAddCircle,
   tdesignAddCircleFilled,
+  tdesignDam,
+  tdesignForm,
+  tdesignInstitutionChecked,
+  tdesignRootList,
+  tdesignSystemLog,
+  tdesignMoney,
 } from '@ng-icons/tdesign-icons';
 
 import { Component } from '@angular/core';
@@ -44,6 +51,13 @@ import { RouterOutlet } from '@angular/router';
       mynaTrashOne,
       mynaTrash,
       mynaCircleSolid,
+      mynaBank,
+      tdesignDam,
+      tdesignForm,
+      tdesignInstitutionChecked,
+      tdesignRootList,
+      tdesignSystemLog,
+      tdesignMoney,
     }),
   ],
   templateUrl: './app.component.html',
