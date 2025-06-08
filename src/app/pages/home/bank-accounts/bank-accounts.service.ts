@@ -3,12 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Company } from '../company/company.model';
 import { CompanyService } from '../company/company.service';
-
-// export interface Company {
-//   id: number;
-//   name: string;
-// }
-
 export interface BankAccountDTO {
   id?: number;
   bankName: string;
