@@ -18,7 +18,8 @@ public class BankAccountMapper {
                 account.getInitialBalance(),
                 account.getCurrentBalance(),
                 account.getCreationDate(),
-                account.getCompany().getId()
+                account.getCompany().getId(),
+                account.getCompany().getName()
         );
     }
 

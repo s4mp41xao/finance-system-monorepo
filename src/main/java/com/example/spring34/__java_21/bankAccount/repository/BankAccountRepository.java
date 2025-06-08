@@ -9,5 +9,4 @@ public interface BankAccountRepository extends JpaRepository<BankAccount, Long> 
 
     // search all accounts by companies
     List<BankAccount> findByCompanyId(Long companyId);
-
 }

@@ -1,9 +1,7 @@
 package com.example.spring34.__java_21.bankAccount.DTO;
 
 import com.example.spring34.__java_21.bankAccount.model.AccountType;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -21,4 +19,5 @@ public class BankAccountDTO {
     private BigDecimal currentBalance;
     private LocalDateTime creationDate;
     private Long companyId;
+    private String companyName;
 }
