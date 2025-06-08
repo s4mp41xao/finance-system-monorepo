@@ -21,7 +21,7 @@
         <table class="company-table">
           <thead>
             <tr class="table-header">
-              <th class="table-cell">Nome da empresa</th>
+              <th class="table-cell">Empresa</th>
               <th class="table-cell">
                 <div class="alert alert-success" role="alert">
                   <h4 class="alert-heading"></h4>
@@ -39,12 +39,11 @@
             </tr>
           </thead>
           <tbody>
-            @for (account of bankAccounts; track account.id) {
+            @for (account of bankAccounts; track account) {
 
             <tr class="table-row">
               <td class="table-cell">
-                <!-- {{ getCompanyName(account.companyId) }} -->
-                {{ account.companyId }}
+                {{ account.companyName }}
               </td>
               <td class="table-cell">{{ account.bankName }}</td>
               <td class="table-cell">{{ account.agency }}</td>

@@ -160,6 +160,7 @@ export class BankAccountsComponent implements OnInit {
       initialBalance: 0,
       currentBalance: 0,
       companyId: null as any,
+      companyName: '',
     };
   }
 }

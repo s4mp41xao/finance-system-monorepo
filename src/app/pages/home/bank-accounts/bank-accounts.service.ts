@@ -13,6 +13,7 @@ export interface BankAccountDTO {
   currentBalance: number;
   creationDate?: string;
   companyId: number;
+  companyName: string;
 }
 
 @Injectable({ providedIn: 'root' })
