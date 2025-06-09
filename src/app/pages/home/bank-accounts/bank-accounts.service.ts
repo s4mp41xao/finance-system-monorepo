@@ -39,6 +39,10 @@ export class BankAccountService {
     );
   }
 
+  getAccountsByUser(): Observable<BankAccountDTO[]> {
+    return this.http.get<BankAccountDTO[]>(`${this.baseUrl}/company/user`);
+  }
+
   deleteAccount(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }

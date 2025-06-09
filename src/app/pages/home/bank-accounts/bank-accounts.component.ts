@@ -66,8 +66,10 @@ export class BankAccountsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadAccounts();
     this.loadCompanies();
+    this.getAccountsByUser();
+    {
+    }
   }
 
   loadCompanies(): void {
@@ -76,20 +78,11 @@ export class BankAccountsComponent implements OnInit {
         this.companies = companies;
         if (companies.length > 0) {
           this.bankAccountForm.get('companyId')?.setValue(companies[0].id);
-          this.loadAccounts();
+          this.getAccountsByUser;
         }
       },
       error: () => console.error('Erro ao carregar empresas do usúario'),
     });
-  }
-
-  loadAccounts(): void {
-    const selectedCompanyId = this.bankAccountForm.get('companyId')?.value;
-    if (selectedCompanyId) {
-      this.bankAccountService
-        .getAll(selectedCompanyId)
-        .subscribe((accounts) => (this.bankAccounts = accounts));
-    }
   }
 
   createAccount(): void {
@@ -101,7 +94,7 @@ export class BankAccountsComponent implements OnInit {
           this.toastService.success('Conta bancária criada com sucesso!');
           this.cdr.detectChanges();
           // Reset the form and reload accounts
-          this.loadAccounts();
+          this.getAccountsByUser();
           this.bankAccountForm.reset({
             bankName: '',
             agency: '',
@@ -133,14 +126,25 @@ export class BankAccountsComponent implements OnInit {
     }
   }
 
-  // getCompanyName(companyId: number): string {
-  //   const company = this.companies?.find((c: any) => c.id === companyId);
-  //   return company ? company.name : '';
-  // }
+  getAccountsByUser() {
+    this.bankAccountService.getAccountsByUser().subscribe({
+      next: (data) => {
+        this.bankAccounts = data;
+        console.log('Contas bancárias do usuário:', data);
+      },
+      error: (err) => {
+        console.error('Erro ao buscar contas bancárias por usuário', err);
+      },
+    });
+  }
 
   close(): void {
     this.showModal = false;
     this.closed.emit();
+  }
+
+  onOverlayClick(event: MouseEvent) {
+    this.close();
   }
 
   openModal() {
