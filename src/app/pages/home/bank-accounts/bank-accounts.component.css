@@ -50,8 +50,12 @@ li {
   margin-bottom: 1rem;
 }
 
+.content-header {
+  display: flex;
+  align-items: center;
+}
+
 .content-header h2 {
-  margin: 0;
   font-size: 1.5rem;
   align-items: center;
 }
