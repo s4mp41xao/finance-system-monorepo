@@ -1,0 +1,230 @@
+/* Estilo geral */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  background-color: #f9f9f9;
+  border-left: 4px solid #007bff;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 850px;
+  width: 100%;
+  min-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+/* Cabeçalho do Modal */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+}
+
+.content-header h2 {
+  font-size: 1.5rem;
+  align-items: center;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-icon {
+  font-size: 2rem;
+  color: #333;
+}
+
+/* Corpo do Modal */
+.modal-body {
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.form-content {
+  display: grid !important;
+  grid-template-columns: 2fr 2fr;
+  gap: 2rem 2.5rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 0 1.5rem 0;
+  align-items: start;
+}
+
+/* Colunas do formulário */
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+/* Estilo individual de cada item */
+.form-content-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Label */
+.form-content-item-text {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Input + ícone */
+.input-content {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f3f6;
+  width: 100%;
+}
+
+.form-icon {
+  background-color: #263238;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.company-icon {
+  font-size: 1.2rem;
+}
+
+/* Input */
+.input-field {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  background: transparent;
+  min-width: 0;
+}
+
+.input-field:focus {
+  outline: none;
+}
+
+/* Botão Salvar ocupa duas colunas com o grid-column ativado*/
+.button-container {
+  /* grid-column: 1 / span 2; */
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.button-save {
+  background-color: #263238;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.button-save:hover {
+  background-color: white;
+  color: #263238;
+  border: 1px solid #263238;
+}
+
+/* Scrollbar custom para modal */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+
+.company-list {
+  /* margin-top: 1rem; */
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem #e6edef;
+}
+
+.no-companies {
+  padding: 8px;
+  font-style: italic;
+  color: #777;
+}
+
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header {
+  /* background-color: #f2f2f2; */
+}
+
+.table-row:hover {
+  background-color: #f9f9f9;
+}
+
+.table-cell {
+  border: 1px solid #edf1f7;
+  padding: 8px;
+  text-align: left;
+}
+
+.table-cell-delete-icon {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #edf1f7;
+}

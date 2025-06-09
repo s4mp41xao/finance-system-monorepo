@@ -1,0 +1,250 @@
+<div class="content">
+  <div class="content-header">
+    <h1>Registro de contas bancárias</h1>
+    <app-hover-icon-button
+      [iconDefault]="'tdesignAddCircle'"
+      [iconHover]="'tdesignAddCircleFilled'"
+      [cssClass]="'add-company'"
+      (clicked)="openModal()"
+    ></app-hover-icon-button>
+  </div>
+
+  <div class="card">
+    <!-- <div class="card-head">Empresas</div> -->
+    <div class="card-body">
+      <div class="company-list">
+        @if (bankAccounts.length === 0) {
+        <p class="no-companies">Nenhuma conta bancária cadastrada.</p>
+        } @else {
+        <table class="company-table">
+          <thead>
+            <tr class="table-header">
+              <th class="table-cell">Empresa</th>
+              <th class="table-cell">
+                <div class="alert alert-success" role="alert">
+                  <h4 class="alert-heading"></h4>
+                  <p>Banco</p>
+                  <p class="mb-0"></p>
+                </div>
+              </th>
+              <th class="table-cell">Agência</th>
+              <th class="table-cell">Número da Conta</th>
+              <th class="table-cell">Tipo de Conta</th>
+              <th class="table-cell">Saldo Inicial</th>
+              <th class="table-cell">Saldo Atual</th>
+              <th class="table-cell">Data de Criação</th>
+              <th class="table-cell-delete-icon">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (account of bankAccounts; track account) {
+
+            <tr class="table-row">
+              <td class="table-cell">
+                {{ account.companyName }}
+              </td>
+              <td class="table-cell">{{ account.bankName }}</td>
+              <td class="table-cell">{{ account.agency }}</td>
+              <td class="table-cell">{{ account.accountNumber }}</td>
+              <td class="table-cell">
+                {{
+                  account.accountType === "CHECKING"
+                    ? "Conta Corrente"
+                    : "Poupança"
+                }}
+              </td>
+
+              <td class="table-cell">
+                {{ account.initialBalance | currency : "BRL" : "symbol" }}
+              </td>
+
+              <td class="table-cell">
+                {{ account.currentBalance | currency : "BRL" : "symbol" }}
+              </td>
+
+              <td class="table-cell">
+                {{ account.creationDate | date : "short" }}
+              </td>
+              <td class="table-cell-delete-icon">
+                <app-hover-icon-button
+                  [iconDefault]="'mynaTrashOne'"
+                  [iconHover]="'mynaTrash'"
+                  [cssClass]="'delete-icon'"
+                  (clicked)="deleteAccount(account.id!)"
+                ></app-hover-icon-button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        }
+      </div>
+
+      <!-- Modal -->
+      <div
+        *ngIf="showModal"
+        class="modal-backdrop"
+        (click)="onOverlayClick($event)"
+      >
+        <div class="modal" (click)="$event.stopPropagation()">
+          <div class="modal-content">
+            <!-- Cabeçalho -->
+            <div class="modal-header">
+              <div class="content-header">
+                <h2>Nova Conta Bancária</h2>
+              </div>
+              <button class="close-button" (click)="close()">
+                <span class="close-icon">&times;</span>
+              </button>
+            </div>
+
+            <!-- Corpo -->
+            <div class="modal-body">
+              <form [formGroup]="bankAccountForm" (ngSubmit)="createAccount()">
+                <div class="form-content">
+                  <!-- Empresa -->
+                  <div class="form-content-item">
+                    <label class="form-content-item-text">Empresa</label>
+                    <div class="input-content">
+                      <div class="form-icon">
+                        <ng-icon
+                          name="mynaBuilding"
+                          class="company-icon"
+                        ></ng-icon>
+                      </div>
+                      <select
+                        class="input-field"
+                        formControlName="companyId"
+                        placeholder="Selecione uma empresa"
+                      >
+                        <option
+                          *ngFor="let company of companies"
+                          [value]="company.id"
+                        >
+                          {{ company.name }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Banco -->
+                  <div class="form-content-item">
+                    <label class="form-content-item-text">Banco</label>
+                    <div class="input-content">
+                      <div class="form-icon">
+                        <ng-icon name="mynaBank" class="company-icon"></ng-icon>
+                      </div>
+                      <input
+                        class="input-field"
+                        type="text"
+                        formControlName="bankName"
+                        placeholder="Ex: Bradesco"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Agência -->
+                  <div class="form-content-item">
+                    <label class="form-content-item-text">Agência</label>
+                    <div class="input-content">
+                      <div class="form-icon">
+                        <ng-icon
+                          name="tdesignDam"
+                          class="company-icon"
+                        ></ng-icon>
+                      </div>
+                      <input
+                        class="input-field"
+                        type="text"
+                        formControlName="agency"
+                        placeholder="Ex: 1234"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Conta -->
+                  <div class="form-content-item">
+                    <label class="form-content-item-text"
+                      >Número da Conta</label
+                    >
+                    <div class="input-content">
+                      <div class="form-icon">
+                        <ng-icon
+                          name="tdesignSystemLog"
+                          class="company-icon"
+                        ></ng-icon>
+                      </div>
+                      <input
+                        class="input-field"
+                        type="text"
+                        formControlName="accountNumber"
+                        placeholder="Ex: 123456-7"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Tipo -->
+                  <div class="form-content-item">
+                    <label class="form-content-item-text">Tipo de Conta</label>
+                    <div class="input-content">
+                      <div class="form-icon">
+                        <ng-icon
+                          name="tdesignRootList"
+                          class="company-icon"
+                        ></ng-icon>
+                      </div>
+                      <select class="input-field" formControlName="accountType">
+                        <option value="CHECKING">Conta Corrente</option>
+                        <option value="SAVING">Poupança</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Saldo Inicial -->
+                  <div class="form-content-item">
+                    <label class="form-content-item-text">Saldo Inicial</label>
+                    <div class="input-content">
+                      <div class="form-icon">
+                        <ng-icon
+                          name="tdesignMoney"
+                          class="company-icon"
+                        ></ng-icon>
+                      </div>
+                      <input
+                        class="input-field"
+                        type="number"
+                        formControlName="initialBalance"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Saldo Atual -->
+                  <div class="form-content-item">
+                    <label class="form-content-item-text">Saldo Atual</label>
+                    <div class="input-content">
+                      <div class="form-icon">
+                        <ng-icon
+                          name="tdesignMoneyFilled"
+                          class="company-icon"
+                        ></ng-icon>
+                      </div>
+                      <input
+                        class="input-field"
+                        type="number"
+                        formControlName="currentBalance"
+                      />
+                    </div>
+                  </div>
+                  <!-- Botão Salvar -->
+                  <div class="form-content-item button-container">
+                    <button type="submit" class="button-save">Salvar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
