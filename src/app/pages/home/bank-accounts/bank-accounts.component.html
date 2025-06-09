@@ -1,5 +1,3 @@
-<h2>Contas Bancárias</h2>
-
 <div class="content">
   <div class="content-header">
     <h1>Registro de contas bancárias</h1>
@@ -33,7 +31,7 @@
               <th class="table-cell">Número da Conta</th>
               <th class="table-cell">Tipo de Conta</th>
               <th class="table-cell">Saldo Inicial</th>
-              <th class="tablecell">Saldo Atual</th>
+              <th class="table-cell">Saldo Atual</th>
               <th class="table-cell">Data de Criação</th>
               <th class="table-cell-delete-icon">Ações</th>
             </tr>
@@ -83,8 +81,12 @@
       </div>
 
       <!-- Modal -->
-      <div *ngIf="showModal" class="modal-backdrop">
-        <div class="modal">
+      <div
+        *ngIf="showModal"
+        class="modal-backdrop"
+        (click)="onOverlayClick($event)"
+      >
+        <div class="modal" (click)="$event.stopPropagation()">
           <div class="modal-content">
             <!-- Cabeçalho -->
             <div class="modal-header">
@@ -136,6 +138,7 @@
                         class="input-field"
                         type="text"
                         formControlName="bankName"
+                        placeholder="Ex: Bradesco"
                       />
                     </div>
                   </div>
@@ -154,6 +157,7 @@
                         class="input-field"
                         type="text"
                         formControlName="agency"
+                        placeholder="Ex: 1234"
                       />
                     </div>
                   </div>
@@ -174,6 +178,7 @@
                         class="input-field"
                         type="text"
                         formControlName="accountNumber"
+                        placeholder="Ex: 123456-7"
                       />
                     </div>
                   </div>
