@@ -6,6 +6,7 @@ import com.example.spring34.__java_21.bankAccount.model.BankAccount;
 import com.example.spring34.__java_21.bankAccount.repository.BankAccountRepository;
 import com.example.spring34.__java_21.company.model.CompanyModel;
 import com.example.spring34.__java_21.company.repository.CompanyRepository;
+import com.example.spring34.__java_21.user.model.User;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,15 @@ public class BankAccountService {
     public List<BankAccountDTO> getAccountsByCompany(Long companyId){
         return bankAccountRepository.findByCompanyId(companyId)
                 .stream()
+                .map(BankAccountMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<BankAccountDTO> getAllBankAccountsByUser(User user){
+        List<CompanyModel> companies = companyRepository.findByUserId(user.getId());
+
+        return companies.stream()
+                .flatMap(company -> bankAccountRepository.findByCompanyId(company.getId()).stream())
                 .map(BankAccountMapper::toDTO)
                 .collect(Collectors.toList());
     }
