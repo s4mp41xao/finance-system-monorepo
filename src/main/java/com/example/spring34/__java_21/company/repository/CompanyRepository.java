@@ -36,4 +36,6 @@ public interface CompanyRepository extends JpaRepository<CompanyModel, Long> {
     List<CompanyModel> findByUser(User user);
 
     boolean existsByCnpjAndUserId(String cnpj, Long userId);
+
+    List<CompanyModel> findByUserId(Long userId);
 }
