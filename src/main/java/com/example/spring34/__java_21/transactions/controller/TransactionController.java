@@ -21,7 +21,7 @@ public class TransactionController {
     }
 
     @GetMapping("/get/{id}")
-    public TransactionDTO getById(@PathVariable Long id) {
+    public TransactionDTO getById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
@@ -31,7 +31,7 @@ public class TransactionController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable("id") Long id) {
         service.delete(id);
     }
 }
