@@ -42,7 +42,14 @@ export class TransactionsComponent implements OnInit {
 
   loadCompanies() {
     this.companyService.getCompaniesByUser().subscribe({
-      next: (data) => (this.companies = data),
+      next: (data) => {
+        this.companies = data;
+        if (this.companies.length > 0) {
+          this.selectedCompanyId = this.companies[0].id;
+          this.loadBankAccounts(this.selectedCompanyId);
+          this.loadTransactions(this.selectedCompanyId);
+        }
+      },
       error: (error) => console.error('Erro ao carregar empresas', error),
     });
   }
