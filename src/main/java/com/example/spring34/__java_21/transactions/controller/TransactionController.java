@@ -34,4 +34,9 @@ public class TransactionController {
     public void delete(@PathVariable("id") Long id) {
         service.delete(id);
     }
+
+    @GetMapping("/company/{companyId}")
+    public List<TransactionDTO> getTransactionByCompany(@PathVariable("companyId") Long companyId) {
+        return service.findAllByCompanyId(companyId);
+    }
 }
