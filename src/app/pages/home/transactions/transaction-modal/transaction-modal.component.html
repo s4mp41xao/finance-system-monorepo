@@ -1,71 +1,134 @@
 <!-- Modal de Nova Transação -->
 <div class="modal-backdrop" (click)="onClose()"></div>
-<div class="modal">
+<div class="modal" (click)="$event.stopPropagation()">
   <div class="modal-header">
-    <h2>
-      <!-- ícone transação -->
-      Nova Transação
-    </h2>
-    <button class="close-button" (click)="onClose()">&times;</button>
+    <div class="content-header">
+      <h2>Nova Transação</h2>
+    </div>
+    <button class="close-button" (click)="onClose()">
+      <span class="close-icon">&times;</span>
+    </button>
   </div>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div>
-      <label
-        ><!-- ícone valor -->
-        Valor</label
-      >
-      <input type="number" formControlName="amount" required />
-    </div>
-    <div>
-      <label
-        ><!-- ícone data -->
-        Data</label
-      >
-      <input type="date" formControlName="date" required />
-    </div>
-    <div>
-      <label
-        ><!-- ícone descrição -->
-        Descrição</label
-      >
-      <input type="text" formControlName="description" maxlength="100" />
-    </div>
-    <div>
-      <label
-        ><!-- ícone tipo -->
-        Tipo</label
-      >
-      <select formControlName="type" required>
-        <option value="INCOME">Receita</option>
-        <option value="EXPENSE">Despesa</option>
-      </select>
-    </div>
-    <div>
-      <label
-        ><!-- ícone categoria -->
-        Categoria</label
-      >
-      <app-transaction-category-select
-        formControlName="categoryId"
-      ></app-transaction-category-select>
-    </div>
-    <div>
-      <label
-        ><!-- ícone conta -->
-        Conta Bancária</label
-      >
-      <select formControlName="bankAccountId" required>
-        <option value="">Selecione</option>
-        @for (acc of bankAccounts; track acc.id) {
-        <option [value]="acc.id">
-          {{ acc.bankName }}
-        </option>
-        }
-      </select>
-    </div>
-    <div class="modal-actions">
-      <button type="submit" [disabled]="form.invalid">Salvar</button>
-      <button type="button" (click)="onClose()">Cancelar</button>
-    </div>
-  </form>
+  <div class="modal-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-content">
+        <!-- Coluna 1 -->
+        <div class="form-column">
+          <div class="form-content-item">
+            <label class="form-content-item-text">Valor</label>
+            <div class="input-content">
+              <div class="form-icon">
+                <ng-icon name="tdesignMoney" class="company-icon"></ng-icon>
+              </div>
+              <input
+                class="input-field"
+                type="number"
+                formControlName="amount"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-content-item">
+            <label class="form-content-item-text">Data</label>
+            <div class="input-content">
+              <div class="form-icon">
+                <ng-icon name="tdesignCalendar1" class="company-icon"></ng-icon>
+              </div>
+              <input
+                class="input-field"
+                type="date"
+                formControlName="date"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-content-item">
+            <label class="form-content-item-text">Descrição</label>
+            <div class="input-content">
+              <div class="form-icon">
+                <ng-icon name="tdesignFile1" class="company-icon"></ng-icon>
+              </div>
+              <input
+                class="input-field"
+                type="text"
+                formControlName="description"
+                maxlength="100"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Coluna 2 -->
+        <div class="form-column">
+          <div class="form-content-item">
+            <label class="form-content-item-text">Tipo</label>
+            <div class="input-content">
+              <div class="form-icon">
+                <ng-icon name="tdesignSwap" class="company-icon"></ng-icon>
+              </div>
+              <select class="input-field" formControlName="type" required>
+                <option value="INCOME">Receita</option>
+                <option value="EXPENSE">Despesa</option>
+              </select>
+            </div>
+          </div>
+          <!-- Conta Bancária agora vem antes da Categoria -->
+          <div class="form-content-item">
+            <label class="form-content-item-text">Conta Bancária</label>
+            <div class="input-content">
+              <div class="form-icon">
+                <ng-icon name="mynaBank" class="company-icon"></ng-icon>
+              </div>
+              <select
+                class="input-field"
+                formControlName="bankAccountId"
+                required
+              >
+                <option value="">Selecione</option>
+                @for (acc of bankAccounts; track acc.id) {
+                <option [value]="acc.id">
+                  {{ acc.bankName }}
+                </option>
+                }
+              </select>
+            </div>
+          </div>
+          <div class="form-content-item">
+            <label class="form-content-item-text">Categoria</label>
+            <div class="input-content">
+              <div class="form-icon">
+                <ng-icon name="mynaTag" class="company-icon"></ng-icon>
+              </div>
+              <app-transaction-category-select
+                #categorySelect
+                class="input-category-field category-select-compact"
+                formControlName="categoryId"
+              ></app-transaction-category-select>
+            </div>
+          </div>
+        </div>
+        <!-- Botão Salvar ocupa as duas colunas -->
+        <div
+          class="form-content-item button-container"
+          style="grid-column: 1 / span 2"
+        >
+          <button type="submit" class="button-save" [disabled]="form.invalid">
+            Salvar
+          </button>
+          <!-- <button
+            type="button"
+            class="button-save"
+            style="
+              background: #fff;
+              color: #263238;
+              border: 1px solid #263238;
+              margin-left: 1rem;
+            "
+            (click)="onClose()"
+          >
+            Cancelar
+          </button> -->
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

@@ -6,6 +6,7 @@ import {
   OnInit,
   OnChanges,
   SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 import {
   FormBuilder,
@@ -15,9 +16,10 @@ import {
 } from '@angular/forms';
 import { TransactionCategorySelectComponent } from '../transaction-category-select/transaction-category-select.component';
 import { BankAccountService } from '../../bank-accounts/bank-accounts.service';
+import { NgIcon } from '@ng-icons/core';
 
 @Component({
-  imports: [TransactionCategorySelectComponent, ReactiveFormsModule],
+  imports: [TransactionCategorySelectComponent, ReactiveFormsModule, NgIcon],
   selector: 'app-transaction-modal',
   templateUrl: './transaction-modal.component.html',
   styleUrls: ['./transaction-modal.component.css'],
@@ -29,6 +31,9 @@ export class TransactionModalComponent implements OnInit, OnChanges {
 
   form!: FormGroup;
   bankAccounts: any[] = [];
+
+  @ViewChild('categorySelect')
+  categorySelectComponent?: TransactionCategorySelectComponent;
 
   constructor(
     private fb: FormBuilder,
@@ -70,12 +75,16 @@ export class TransactionModalComponent implements OnInit, OnChanges {
   }
 
   onSubmit() {
+    // Impede submit se a categoria está em modo de criação
+    if (this.categorySelectComponent?.creating) {
+      // Substitua por seu ToastService se houver
+      alert('Salve a nova categoria antes de criar a transação!');
+      return;
+    }
+
     if (this.form.valid) {
       const formValue = this.form.value;
-
-      // categoryId agora é um objeto { id, name }
-      const category = formValue.categoryId;
-
+      const category = formValue.categoryId; // deve ser { id, name }
       const transaction = {
         ...formValue,
         categoryId: category?.id,
