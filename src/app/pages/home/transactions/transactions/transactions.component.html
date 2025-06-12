@@ -1,0 +1,86 @@
+<div class="content">
+  <div class="content-header transactions-header">
+    <h1>Transações</h1>
+    <div class="actions">
+      <select
+        id="companySelect"
+        [(ngModel)]="selectedCompanyId"
+        (change)="onCompanyChange(selectedCompanyId)"
+        class="company-select-input"
+      >
+        <option [ngValue]="null">Selecione uma empresa</option>
+        @for (company of companies; track company.id) {
+        <option [ngValue]="company.id">
+          {{ company.name }}
+        </option>
+        }
+      </select>
+      <button class="button-save" (click)="openModal()">Nova Transação</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="company-list">
+        @if (transactions.length === 0) {
+        <p class="no-companies">Nenhuma transação encontrada.</p>
+        } @else {
+        <table class="company-table">
+          <thead>
+            <tr class="table-header">
+              <th class="table-cell">Data</th>
+              <th class="table-cell">Descrição</th>
+              <th class="table-cell">Valor</th>
+              <th class="table-cell">Categoria</th>
+              <th class="table-cell">Tipo</th>
+              <th class="table-cell">Conta Bancária</th>
+              <th class="table-cell-delete-icon">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (transaction of transactions; track transaction.transactionId)
+            {
+            <tr class="table-row">
+              <td class="table-cell">
+                {{ transaction.date | date : "dd/MM/yyyy" }}
+              </td>
+              <td class="table-cell">
+                {{ transaction.description }}
+              </td>
+              <td class="table-cell">
+                {{ transaction.amount | currency : "BRL" }}
+              </td>
+              <td class="table-cell">
+                {{ transaction.categoryName }}
+              </td>
+              <td class="table-cell">
+                {{ transaction.type === "INCOME" ? "Receita" : "Despesa" }}
+              </td>
+              <td class="table-cell">
+                {{ getBankAccountName(transaction.bankAccountId) }}
+              </td>
+              <td class="table-cell-delete-icon">
+                <app-hover-icon-button
+                  [iconDefault]="'mynaTrashOne'"
+                  [iconHover]="'mynaTrash'"
+                  [cssClass]="'delete-icon'"
+                  (clicked)="deleteTransaction(transaction)"
+                ></app-hover-icon-button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+@if (showModal) {
+<app-transaction-modal
+  [companyId]="selectedCompanyId"
+  (close)="closeModal()"
+  (saved)="saveTransaction($event)"
+></app-transaction-modal>
+}

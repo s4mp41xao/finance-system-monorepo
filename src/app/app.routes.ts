@@ -9,6 +9,7 @@ import { ExpensesComponent } from './pages/home/expenses/expenses.component';
 import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
 import { CompanyComponent } from './pages/home/company/company.component';
 import { BankAccountsComponent } from './pages/home/bank-accounts/bank-accounts.component';
+import { TransactionsComponent } from './pages/home/transactions/transactions/transactions.component';
 
 export const routes: Routes = [
   {
@@ -38,6 +39,7 @@ export const routes: Routes = [
       { path: 'expenses', component: ExpensesComponent },
       { path: 'company', component: CompanyComponent },
       { path: 'bank-accounts', component: BankAccountsComponent },
+      { path: 'transactions', component: TransactionsComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
   },

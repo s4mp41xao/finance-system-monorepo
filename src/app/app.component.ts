@@ -12,6 +12,7 @@ import {
   mynaTrashOne,
   mynaTrash,
   mynaBank,
+  mynaTag,
 } from '@ng-icons/mynaui/outline';
 
 import {
@@ -26,6 +27,10 @@ import {
   tdesignRootList,
   tdesignSystemLog,
   tdesignMoney,
+  tdesignSwap,
+  tdesignFile1,
+  tdesignCalendar1,
+  tdesignCheck,
 } from '@ng-icons/tdesign-icons';
 
 import { Component } from '@angular/core';
@@ -58,6 +63,11 @@ import { RouterOutlet } from '@angular/router';
       tdesignRootList,
       tdesignSystemLog,
       tdesignMoney,
+      tdesignSwap,
+      mynaTag,
+      tdesignFile1,
+      tdesignCalendar1,
+      tdesignCheck,
     }),
   ],
   templateUrl: './app.component.html',
