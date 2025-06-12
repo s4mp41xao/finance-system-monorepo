@@ -60,12 +60,12 @@
                 {{ getBankAccountName(transaction.bankAccountId) }}
               </td>
               <td class="table-cell-delete-icon">
-                <button
-                  class="delete-icon"
-                  (click)="deleteTransaction(transaction)"
-                >
-                  <span class="close-icon">&times;</span>
-                </button>
+                <app-hover-icon-button
+                  [iconDefault]="'mynaTrashOne'"
+                  [iconHover]="'mynaTrash'"
+                  [cssClass]="'delete-icon'"
+                  (clicked)="deleteTransaction(transaction)"
+                ></app-hover-icon-button>
               </td>
             </tr>
             }

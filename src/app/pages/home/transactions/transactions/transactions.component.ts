@@ -6,6 +6,7 @@ import { TransactionsService } from './transactions.service';
 import { BankAccountService } from '../../bank-accounts/bank-accounts.service';
 import { CompanyService } from '../../company/company.service';
 import { Company } from '../../company/company.model';
+import { HoverIconButtonComponent } from '../../../../components/hover-icon-button/hover-icon-button.component';
 
 @Component({
   imports: [
@@ -13,6 +14,7 @@ import { Company } from '../../company/company.model';
     TransactionModalComponent,
     ReactiveFormsModule,
     FormsModule,
+    HoverIconButtonComponent,
   ],
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
