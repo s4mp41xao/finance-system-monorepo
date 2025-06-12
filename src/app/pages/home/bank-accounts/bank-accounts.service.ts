@@ -46,4 +46,9 @@ export class BankAccountService {
   deleteAccount(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+
+  // Get bank accounts by company ID
+  getByCompany(companyId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/company/${companyId}`);
+  }
 }
