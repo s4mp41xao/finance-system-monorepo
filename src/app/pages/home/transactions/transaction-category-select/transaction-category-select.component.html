@@ -1,31 +1,44 @@
-<p>transaction-category-select works!</p>
-@if (!creating) {
-<select
-  [disabled]="disabled"
-  [ngModel]="value"
-  (ngModelChange)="selectCategory($event)"
->
-  <option [ngValue]="null">Selecione</option>
-  @for (cat of categories; track cat.id) {
-  <option [ngValue]="cat.id" [hidden]="type && cat.type !== type">
-    {{ cat.name }}
-  </option>
+<div class="category-input-group" (click)="$event.stopPropagation()">
+  @if (!creating) {
+  <select
+    class="category-select input-field"
+    [disabled]="disabled"
+    [ngModel]="value"
+    (ngModelChange)="selectCategory($event)"
+  >
+    <option [ngValue]="null">Selecione</option>
+    @for (cat of categories; track cat.id) {
+    <option [ngValue]="cat.id" [hidden]="type && cat.type !== type">
+      {{ cat.name }}
+    </option>
+    }
+  </select>
+  <button
+    type="button"
+    class="category-add-btn"
+    title="Nova categoria"
+    (click)="showCreate(); $event.stopPropagation()"
+  >
+    <ng-icon name="tdesignAdd" style="font-size: 1.2rem"></ng-icon>
+  </button>
+  } @else {
+  <input
+    type="text"
+    class="category-input input-field"
+    [(ngModel)]="newCategoryName"
+    placeholder="Nome da categoria"
+    [disabled]="disabled"
+    #categoryInput
+    (click)="$event.stopPropagation()"
+    (keydown.enter)="createCategory()"
+  />
+  <button
+    type="button"
+    class="category-save-btn"
+    (click)="createCategory(); $event.stopPropagation()"
+    [disabled]="!newCategoryName.trim()"
+  >
+    <ng-icon name="tdesignCheck" style="font-size: 1.2rem"></ng-icon>
+  </button>
   }
-</select>
-<button type="button" (click)="showCreate()">+ Nova Categoria</button>
-} @else {
-<input
-  type="text"
-  [(ngModel)]="newCategoryName"
-  placeholder="Nome da categoria"
-  [disabled]="disabled"
-/>
-<button
-  type="button"
-  (click)="createCategory()"
-  [disabled]="!newCategoryName.trim()"
->
-  Salvar
-</button>
-<button type="button" (click)="cancelCreate()">Cancelar</button>
-}
+</div>
