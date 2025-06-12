@@ -1,0 +1,71 @@
+<!-- Modal de Nova Transação -->
+<div class="modal-backdrop" (click)="onClose()"></div>
+<div class="modal">
+  <div class="modal-header">
+    <h2>
+      <!-- ícone transação -->
+      Nova Transação
+    </h2>
+    <button class="close-button" (click)="onClose()">&times;</button>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label
+        ><!-- ícone valor -->
+        Valor</label
+      >
+      <input type="number" formControlName="amount" required />
+    </div>
+    <div>
+      <label
+        ><!-- ícone data -->
+        Data</label
+      >
+      <input type="date" formControlName="date" required />
+    </div>
+    <div>
+      <label
+        ><!-- ícone descrição -->
+        Descrição</label
+      >
+      <input type="text" formControlName="description" maxlength="100" />
+    </div>
+    <div>
+      <label
+        ><!-- ícone tipo -->
+        Tipo</label
+      >
+      <select formControlName="type" required>
+        <option value="INCOME">Receita</option>
+        <option value="EXPENSE">Despesa</option>
+      </select>
+    </div>
+    <div>
+      <label
+        ><!-- ícone categoria -->
+        Categoria</label
+      >
+      <app-transaction-category-select
+        formControlName="categoryId"
+      ></app-transaction-category-select>
+    </div>
+    <div>
+      <label
+        ><!-- ícone conta -->
+        Conta Bancária</label
+      >
+      <select formControlName="bankAccountId" required>
+        <option value="">Selecione</option>
+        @for (acc of bankAccounts; track acc.id) {
+        <option [value]="acc.id">
+          {{ acc.bankName }}
+        </option>
+        }
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button type="submit" [disabled]="form.invalid">Salvar</button>
+      <button type="button" (click)="onClose()">Cancelar</button>
+    </div>
+  </form>
+</div>
