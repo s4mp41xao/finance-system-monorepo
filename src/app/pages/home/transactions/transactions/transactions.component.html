@@ -1,24 +1,22 @@
 <div class="content">
-  <div class="content-header">
+  <div class="content-header transactions-header">
     <h1>Transações</h1>
-    <button class="button-save" (click)="openModal()">Nova Transação</button>
-  </div>
-
-  <div class="company-select">
-    <label for="companySelect">Empresa:</label>
-    <select
-      id="companySelect"
-      [(ngModel)]="selectedCompanyId"
-      (change)="onCompanyChange(selectedCompanyId)"
-      class="company-select-input"
-    >
-      <option [ngValue]="null">Selecione uma empresa</option>
-      @for (company of companies; track company.id) {
-      <option [ngValue]="company.id">
-        {{ company.name }}
-      </option>
-      }
-    </select>
+    <div class="actions">
+      <select
+        id="companySelect"
+        [(ngModel)]="selectedCompanyId"
+        (change)="onCompanyChange(selectedCompanyId)"
+        class="company-select-input"
+      >
+        <option [ngValue]="null">Selecione uma empresa</option>
+        @for (company of companies; track company.id) {
+        <option [ngValue]="company.id">
+          {{ company.name }}
+        </option>
+        }
+      </select>
+      <button class="button-save" (click)="openModal()">Nova Transação</button>
+    </div>
   </div>
 
   <div class="card">
