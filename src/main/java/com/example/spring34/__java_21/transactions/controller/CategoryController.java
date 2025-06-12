@@ -34,4 +34,9 @@ public class CategoryController {
     public void delete(@PathVariable("id") Long id) {
         service.delete(id);
     }
+
+    @GetMapping("/all-for-current-user")
+    public List<CategoryDTO> getAllForCurrentUser() {
+        return service.findAll();
+    }
 }
