@@ -1,14 +1,92 @@
+body,
+html {
+  height: 100%;
+  background: #f3f8f8;
+}
+
 main {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: #f5f5f5;
-  height: 100vh;
+  justify-content: center;
+  background: linear-gradient(135deg, #e1eaec 0%, #c6d8db 100%);
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #263238;
+  padding-left: 10rem;
 }
 
 .form-section {
-  gap: 4rem;
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px #33404622;
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  min-width: 340px;
+  max-width: 450px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-section h2 {
+  color: #263238;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-content {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #c6d8db;
+  background-color: #f3f8f8;
+  width: 100%;
+}
+
+.form-icon {
+  background-color: #547c86;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+input[type="email"],
+input[type="password"] {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #263238;
+  min-width: 0;
+  height: 100%;
+  transition: border 0.2s;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border: 1.5px solid #547c86;
+  outline: none;
+  background: #fff;
 }
 
 button {
@@ -22,11 +100,99 @@ button {
   }
 
   &.register-button {
-    background-color: #007bff;
+    background-color: #547c86;
     color: white;
   }
 
   &:disabled {
     opacity: 0.8;
   }
+}
+
+.login-button {
+  background: #547c86;
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.9rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.login-button:disabled {
+  background: #c6d8db;
+  color: #394a51;
+  cursor: not-allowed;
+}
+
+.login-button:hover:enabled {
+  background: #263238;
+  color: #fff;
+}
+
+.register-button {
+  background: #e1eaec;
+  color: #547c86;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.9rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.register-button:hover {
+  background: #394a51;
+  color: #fff;
+}
+
+span {
+  color: #6f97a1;
+  font-size: 0.95rem;
+  margin: 1rem 0 0.5rem 0;
+  display: block;
+  text-align: center;
+}
+
+.finance-highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 2rem 0;
+}
+
+.finance-highlight h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #263238;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+}
+
+.finance-highlight h1 span {
+  background: linear-gradient(90deg, #547c86 30%, #6f97a1 100%);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.finance-highlight img {
+  width: 500px; /* Aumente conforme desejar */
+  max-width: 95vw;
+  margin-top: 0.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px #33404622;
+  display: block;
+  margin-left: 10rem;
+  margin-right: auto;
+  margin-bottom: 6rem;
 }
