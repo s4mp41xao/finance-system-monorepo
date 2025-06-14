@@ -26,23 +26,14 @@ A Spring Boot REST API for managing bank accounts associated with companies and 
 
 ### Setup
 
-1. Clone the repository:
+1. Clone the repository: https://github.com/s4mp41xao/jwt-login-and-register.git
 
 2. Configure your database in `src/main/resources/application.properties`.
 
 3. Build and run the application:
 
-## API Endpoints
+## API Endpoint
 
-- `POST /bank-accounts` - Create a new bank account
-- `GET /bank-accounts/company/{companyId}` - List all bank accounts for a company
-- `GET /bank-accounts/user/{userId}` - List all bank accounts for a user
-- `DELETE /bank-accounts/{id}` - Delete a bank account by ID
-
-
-Here are the API endpoints for `company`, `transactions`, and `user` in the same format:
-
-## API Endpoints
 - **User**
   - `POST /users` — Create a new user
   - `GET /users` — List all users
