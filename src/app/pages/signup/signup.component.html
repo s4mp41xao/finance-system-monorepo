@@ -13,23 +13,25 @@
       type="text"
       label="Seu nome"
       placeholder="Digite seu nome"
+      [icon]="'tdesignLockOn'"
     >
     </app-default-input-button>
 
     <app-default-input-button
-      formControlName="email"
+      label="E-mail"
       inputName="email"
       type="email"
-      label="email"
-      placeholder="seuemail@gmail.com"
-    >
-    </app-default-input-button>
+      placeholder="E-mail"
+      [icon]="'tdesignMail'"
+      formControlName="email"
+    ></app-default-input-button>
 
     <app-default-input-button
       formControlName="password"
       inputName="password"
       type="password"
       label="Sua senha"
+      [icon]="'tdesignLockOn'"
     >
     </app-default-input-button>
 
@@ -38,6 +40,7 @@
       inputName="passwordConfirm"
       type="password"
       label="Confirme sua senha"
+      [icon]="'tdesignLockOn'"
     >
     </app-default-input-button>
   </form>
