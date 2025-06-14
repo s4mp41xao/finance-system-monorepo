@@ -1,7 +1,16 @@
 <label [for]="inputName">{{ label }}</label>
-<input
-  [type]="type"
-  [placeholder]="placeholder"
-  [value]="value"
-  (input)="onInput($event)"
-/>
+<div class="input-content">
+  @if (icon) {
+  <div class="form-icon">
+    <ng-icon [name]="icon" style="font-size: 1.3rem"></ng-icon>
+  </div>
+  }
+  <input
+    [type]="type"
+    [placeholder]="placeholder"
+    [value]="value"
+    [id]="inputName"
+    (input)="onInput($event)"
+    class="input-field"
+  />
+</div>

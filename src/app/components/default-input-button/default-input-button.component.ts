@@ -4,12 +4,13 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { Component, forwardRef, Input } from '@angular/core';
+import { NgIcon } from '@ng-icons/core';
 
 type InputTypes = 'text' | 'email' | 'password';
 
 @Component({
   selector: 'app-default-input-button',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIcon],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -25,6 +26,7 @@ export class DefaultInputButtonComponent implements ControlValueAccessor {
   @Input() placeholder: string = '';
   @Input() label: string = '';
   @Input() inputName: string = '';
+  @Input() icon?: string;
 
   value: String = '';
   onChange: any = () => {};
