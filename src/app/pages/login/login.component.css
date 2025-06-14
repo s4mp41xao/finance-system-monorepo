@@ -1,5 +1,6 @@
 form {
   width: 100%;
-  gap: 24px;
-  /* background-color: antiquewhite; */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
