@@ -1,59 +1,38 @@
-# AngularFinanceCrud
+# Finance System Control 📊
+A modern, responsive finance management web application built with Angular 17+.
+Features user authentication (JWT), company and bank account management, transaction tracking, and category management—all with a clean UI and modular code structure.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+## Features
+- Authentication: JWT-based login and registration
+- Company Management: Register, list, and delete companies
+- Bank Accounts: Manage multiple bank accounts per company
+- Transactions: Create, edit, and delete financial transactions
+- Categories: Custom categories per user, with duplicate prevention
+- Responsive UI: Modern design with icon support and mobile-friendly layouts
+-Toasts & Feedback: User feedback with ngx-toastr
+- Protected Routes: Auth guards for secure navigation
 
-## Development server
+## Technologies
+- Angular 17+
+- @ng-icons (icon system)
+- ngx-toastr (notifications)
+- RxJS
 
-To start a local development server, run:
+## Getting Started
+Prerequisites
+- Node.js (v18+ recommended)
+- Angular CLI (npm install -g @angular/cli)
 
-```bash
-ng serve
-```
+````bash
+git clone https://github.com/your-username/angular-finance-crud.git
+cd angular-finance-crud/angular-login-and-register-with-jwt
+npm install
+````
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Customization
+- Icons: Easily swap or add icons via @ng-icons and provideIcons in `app.component.ts.`
+- Theme: Change color palette in CSS files under styles and component folders.
+- Backend: Update API endpoints in the services as needed for your backend.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### License
+MIT
