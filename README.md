@@ -4,10 +4,13 @@ A Spring Boot REST API for managing bank accounts associated with companies and 
 
 ## Features
 
-- Create bank accounts linked to companies
-- List all bank accounts for a company
-- List all bank accounts for a user
-- Delete bank accounts by ID
+- Register and manage companies and users
+- Create, list, and delete bank accounts linked to companies
+- Retrieve all bank accounts associated with a specific company or user
+- Perform, list, and delete financial transactions for bank accounts
+- Update and manage company and user information
+- Secure RESTful API endpoints with clear separation of concerns
+- Built with Java 21, Spring Boot, and JPA/Hibernate for robust backend development
 
 ## Technologies
 
