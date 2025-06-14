@@ -1,27 +1,30 @@
 <app-default-login-layout
-  title="Logue com a sua conta"
+  title="Logue sua conta"
   loginButtonText="Entrar"
   registerButtonText="Registrar"
   (submit)="submit()"
   (navigate)="navigate()"
   [disableLoginButton]="!loginForm.valid"
 >
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
     <app-default-input-button
-      formControlName="email"
+      label="E-mail"
       inputName="email"
       type="email"
-      label="email"
-      placeholder="seuemail@gmail.com"
-    >
-    </app-default-input-button>
+      placeholder="E-mail"
+      [icon]="'tdesignMail'"
+      formControlName="email"
+    ></app-default-input-button>
 
     <app-default-input-button
-      formControlName="password"
+      label="Password"
       inputName="password"
       type="password"
-      label="Sua senha"
-    >
-    </app-default-input-button>
+      placeholder="Password"
+      [icon]="'tdesignLockOn'"
+      formControlName="password"
+    ></app-default-input-button>
+
+    <!-- O botão de submit já está no layout pai -->
   </form>
 </app-default-login-layout>

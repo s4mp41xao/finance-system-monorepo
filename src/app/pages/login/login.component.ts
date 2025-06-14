@@ -10,6 +10,7 @@ import { DefaultInputButtonComponent } from '../../components/default-input-butt
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgIcon } from '@ng-icons/core';
 
 interface LoginForm {
   email: FormControl;
