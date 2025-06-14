@@ -1,6 +1,6 @@
 # Transactions Management API
 
-A Spring Boot REST API for managing bank accounts associated with companies and users.
+A Spring Boot REST API for managing transactions associated with bank accounts, companies and users.
 
 ## Features
 
