@@ -31,6 +31,9 @@ import {
   tdesignFile1,
   tdesignCalendar1,
   tdesignCheck,
+  tdesignUser,
+  tdesignLockOn,
+  tdesignMail,
 } from '@ng-icons/tdesign-icons';
 
 import { Component } from '@angular/core';
@@ -68,6 +71,9 @@ import { RouterOutlet } from '@angular/router';
       tdesignFile1,
       tdesignCalendar1,
       tdesignCheck,
+      tdesignUser,
+      tdesignLockOn,
+      tdesignMail,
     }),
   ],
   templateUrl: './app.component.html',
