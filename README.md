@@ -33,6 +33,3 @@ npm install
 - Icons: Easily swap or add icons via @ng-icons and provideIcons in `app.component.ts.`
 - Theme: Change color palette in CSS files under styles and component folders.
 - Backend: Update API endpoints in the services as needed for your backend.
-
-### License
-MIT
