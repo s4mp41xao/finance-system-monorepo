@@ -74,7 +74,3 @@ A Spring Boot REST API for managing transactions associated with bank accounts, 
 - `controller/` - REST controllers
 - `DTO/` - Data Transfer Objects
 - `mapper/` - Entity-DTO mappers
-
-## License
-
-This project is licensed under the MIT License.
