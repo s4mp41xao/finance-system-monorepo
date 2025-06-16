@@ -13,7 +13,7 @@ Features user authentication (JWT), company and bank account management, transac
 - Protected Routes: Auth guards for secure navigation
 
 ## Technologies
-- Angular 17+
+- Angular 19
 - @ng-icons (icon system)
 - ngx-toastr (notifications)
 - RxJS
