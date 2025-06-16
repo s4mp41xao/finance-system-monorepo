@@ -10,7 +10,7 @@ A Spring Boot REST API for managing transactions associated with bank accounts, 
 - Perform, list, and delete financial transactions for bank accounts
 - Update and manage company and user information
 - Secure RESTful API endpoints with clear separation of concerns
-- Built with Java 21, Spring Boot, and JPA/Hibernate for robust backend development
+- Built with Java 21, Spring Boot, and JPA/Hibernate
 
 ## Technologies
 
