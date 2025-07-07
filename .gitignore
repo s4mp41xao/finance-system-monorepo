@@ -18,6 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
+nohup.out
 
 ### NetBeans ###
 /nbproject/private/
