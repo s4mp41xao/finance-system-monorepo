@@ -1,0 +1,12 @@
+<div class="app-container">
+  <app-sidenav></app-sidenav>
+  <div
+    class="content"
+    [ngClass]="{
+      'body-trimmed': isSidenavExpanded,
+      'body-md-screen': !isSidenavExpanded
+    }"
+  >
+    <router-outlet></router-outlet>
+  </div>
+</div>

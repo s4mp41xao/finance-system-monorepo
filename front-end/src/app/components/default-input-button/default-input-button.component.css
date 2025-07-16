@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #263238;
+  font-weight: 500;
+}
+
+.input-content {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #c6d8db;
+  background-color: #f3f8f8;
+  width: 100%;
+}
+
+.form-icon {
+  background-color: #547c86;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.input-field {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #263238;
+  min-width: 0;
+  height: 100%;
+}
+
+.input-field:focus {
+  outline: none;
+  background: #fff;
+}

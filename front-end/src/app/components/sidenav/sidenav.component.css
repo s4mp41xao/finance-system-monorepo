@@ -1,0 +1,142 @@
+.sidenav-container {
+  display: flex;
+  flex-direction: column;
+  width: 16.5625rem; /* largura expandida */
+  transition: width 0.5s ease;
+  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+}
+
+.sidenav-container.collapsed {
+  width: 5rem; /* largura colapsada */
+}
+
+.sidenav {
+  background: #263238;
+  transition: all 0.3s ease;
+  height: 100vh;
+  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+  color: white;
+  overflow: hidden; /* impede o texto de vazar */
+}
+
+.sidenav-nav {
+  list-style: none;
+  padding: 0.938rem;
+  margin: 0;
+  /* padding: 1rem; */
+}
+
+.sidenav-nav-item {
+  width: 100%;
+  margin-bottom: 0.65rem;
+  border-radius: 0.625rem;
+}
+
+/* item */
+.sidenav-nav-link {
+  /* font-size: 1.1rem; */
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.625rem;
+  cursor: pointer;
+  /* transition: background 0.3s ease; */
+  transition: all 0.3s ease;
+}
+
+.sidenav-nav-item:hover {
+  background: #37474f;
+}
+
+/* item icon */
+.sidenav-link-icon {
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 0.5rem;
+  text-align: center;
+  font-size: 25px;
+}
+
+/* item text */
+.sidenav-link-text {
+  margin-left: 1rem;
+  white-space: nowrap;
+}
+
+.sidenav-nav-link:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Toggle button style */
+.toggle-btn {
+  /* background: none; */
+  border: none;
+  color: white;
+  background: #263238;
+  cursor: pointer;
+  padding: 1rem;
+  width: 100%;
+  /* text-align: right; */
+  font-size: 30px;
+  border-bottom: solid white 0.023rem;
+  /* border: solid white; */
+}
+
+.toggle-btn i {
+  font-size: 1.2rem;
+}
+
+.router-link-active {
+  background-color: #fff;
+  color: #000;
+}
+
+.sub-level-menu {
+  /* display: flex; */
+  /* align-items: center; */
+  /* padding: 8px; */
+  cursor: pointer;
+}
+
+.sublevel-nav {
+  list-style: none;
+  margin: 0 10px;
+}
+
+.sublevel-nav-item {
+  /* align-items: center; */
+  /* display: flex; */
+}
+
+.sublevel-nav-link {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  height: 3rem;
+  color: #898989;
+  text-decoration: none;
+  border-radius: 0.625rem;
+  transition: all 0.3s ease;
+}
+
+.sublevel-link-icon {
+  font-size: 6px;
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 0.5rem;
+  text-align: center;
+}
+
+.sublevel-link-text {
+  margin-left: 0.8rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.sublevel-nav-link:hover {
+  background-color: #fff;
+  color: #000;
+}

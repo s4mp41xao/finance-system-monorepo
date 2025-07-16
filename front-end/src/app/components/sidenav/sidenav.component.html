@@ -1,0 +1,65 @@
+<div [class.collapsed]="!isExpanded" class="sidenav-container">
+  <div class="sidenav">
+    <button class="toggle-btn" (click)="toggleSidenav()">
+      <ng-icon
+        class="sidenav-toggle-icon"
+        [name]="isExpanded ? 'mynaChevronLeft' : 'mynaChevronRight'"
+        [ngStyle]="{
+          transform: isExpanded ? 'rotate(0deg)' : 'rotate(360deg)',
+          transition: 'transform 0.6s ease'
+        }"
+      />
+    </button>
+    <ul class="sidenav-nav">
+      <li class="sidenav-nav-item">
+        <a
+          [routerLink]="['/dashboard']"
+          routerLinkActive="router-link-active"
+          class="sidenav-nav-link"
+        >
+          <ng-icon class="sidenav-link-icon" name="mynaHome" />
+
+          <span class="sidenav-link-text" *ngIf="isExpanded">Dashboard</span>
+        </a>
+      </li>
+      <li class="sidenav-nav-item">
+        <a
+          [routerLink]="['/transactions']"
+          routerLinkActive="router-link-active"
+          class="sidenav-nav-link"
+        >
+          <ng-icon class="sidenav-link-icon" name="tdesignMoneyFilled" />
+          <span class="sidenav-link-text" *ngIf="isExpanded">Transações</span>
+        </a>
+      </li>
+      <li class="sidenav-nav-item">
+        <a
+          [routerLink]="['/company']"
+          routerLinkActive="router-link-active"
+          class="sidenav-nav-link"
+          (click)="toggleSidenav()"
+        >
+          <ng-icon class="sidenav-link-icon" name="mynaBuildingOne" />
+          <span class="sidenav-link-text" *ngIf="isExpanded">Empresas</span>
+        </a>
+
+        <div class="sub-level-menu" *ngIf="isExpanded">
+          <ul class="sublevel-nav">
+            <li class="sublevel-nav-item">
+              <a
+                [routerLink]="['/bank-accounts']"
+                routerLinkActive="router-link-active"
+                class="sublevel-nav-link"
+              >
+                <ng-icon class="sublevel-link-icon" name="mynaCircleSolid" />
+                <span class="sublevel-link-text" *ngIf="isExpanded"
+                  >Contas Bancárias</span
+                >
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

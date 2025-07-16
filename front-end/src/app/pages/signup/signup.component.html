@@ -1,0 +1,47 @@
+<app-default-login-layout
+  title="Cadastre-se e comece agora"
+  loginButtonText="Registrar agora"
+  registerButtonText="Logar agora"
+  (submit)="submit()"
+  (navigate)="navigate()"
+  [disableLoginButton]="!signupForm.valid"
+>
+  <form [formGroup]="signupForm">
+    <app-default-input-button
+      formControlName="name"
+      inputName="name"
+      type="text"
+      label="Seu nome"
+      placeholder="Digite seu nome"
+      [icon]="'tdesignLockOn'"
+    >
+    </app-default-input-button>
+
+    <app-default-input-button
+      label="E-mail"
+      inputName="email"
+      type="email"
+      placeholder="E-mail"
+      [icon]="'tdesignMail'"
+      formControlName="email"
+    ></app-default-input-button>
+
+    <app-default-input-button
+      formControlName="password"
+      inputName="password"
+      type="password"
+      label="Sua senha"
+      [icon]="'tdesignLockOn'"
+    >
+    </app-default-input-button>
+
+    <app-default-input-button
+      formControlName="passwordConfirm"
+      inputName="passwordConfirm"
+      type="password"
+      label="Confirme sua senha"
+      [icon]="'tdesignLockOn'"
+    >
+    </app-default-input-button>
+  </form>
+</app-default-login-layout>

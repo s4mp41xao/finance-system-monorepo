@@ -1,0 +1,120 @@
+<div class="content">
+  <div class="content-header">
+    <h1>Registro de empresas</h1>
+
+    <app-hover-icon-button
+      [iconDefault]="'tdesignAddCircle'"
+      [iconHover]="'tdesignAddCircleFilled'"
+      [cssClass]="'add-company'"
+      (clicked)="openModal()"
+    ></app-hover-icon-button>
+  </div>
+
+  <div class="card">
+    <!-- <div class="card-head">Empresas</div> -->
+    <div class="card-body">
+      <div class="company-list">
+        @if (companies.length === 0) {
+        <p class="no-companies">Nenhuma empresa cadastrada.</p>
+        } @else {
+        <table class="company-table">
+          <thead>
+            <tr class="table-header">
+              <th class="table-cell">Nome da empresa</th>
+              <th class="table-cell">CNPJ</th>
+              <th class="table-cell">Data de Criação</th>
+              <th class="table-cell-delete-icon">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (company of companies; track company.id) {
+            <tr class="table-row">
+              <td class="table-cell">{{ company.name }}</td>
+              <td class="table-cell">{{ company.cnpj }}</td>
+              <td class="table-cell">
+                {{ company.creationDate | date : "short" }}
+              </td>
+              <td class="table-cell-delete-icon">
+                <app-hover-icon-button
+                  [iconDefault]="'mynaTrashOne'"
+                  [iconHover]="'mynaTrash'"
+                  [cssClass]="'delete-icon'"
+                  (clicked)="deleteCompany(company.id)"
+                ></app-hover-icon-button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        }
+      </div>
+
+      <div *ngIf="showModal" class="modal-backdrop" (click)="close()"></div>
+
+      <div *ngIf="showModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Cadastro de Empresas</h2>
+
+            <button class="close-button" (click)="close()">
+              <ng-icon name="mynaX" class="icon close-icon"></ng-icon>
+            </button>
+          </div>
+
+          <form
+            class="form-content"
+            [formGroup]="companyForm"
+            (ngSubmit)="onSubmit()"
+          >
+            <h4 class="form-header">Complete os campos abaixo:</h4>
+
+            <div class="modal-body">
+              <div class="form-content-item">
+                <label class="form-content-item-text">Nome da Empresa:</label>
+
+                <div class="input-content">
+                  <div class="form-icon">
+                    <ng-icon name="mynaBuilding" class="company-icon"></ng-icon>
+                  </div>
+
+                  <input
+                    class="input-field"
+                    type="text"
+                    formControlName="name"
+                    placeholder="Ex: Bradesco"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-content-item">
+                <label class="form-content-item-text">CNPJ:</label>
+
+                <div class="input-content">
+                  <div class="form-icon">
+                    <ng-icon
+                      name="tdesignFactCheck"
+                      class="company-icon"
+                    ></ng-icon>
+                  </div>
+
+                  <input
+                    class="input-field"
+                    type="text"
+                    formControlName="cnpj"
+                    placeholder="Ex: 00.000.000/0000-00"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="button-container">
+                <button class="button-save" type="submit">Salvar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

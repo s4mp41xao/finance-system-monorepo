@@ -1,0 +1,27 @@
+<main>
+  <section class="form-section">
+    <img src="" alt="" />
+    <h2>{{ title }}</h2>
+    <ng-content></ng-content>
+    <button
+      class="login-button"
+      (click)="submit()"
+      [disabled]="disableLoginButton"
+    >
+      {{ loginButtonText }}
+    </button>
+    <div>
+      <span>ou</span>
+    </div>
+    <button class="register-button" (click)="navigate()">
+      {{ registerButtonText }}
+    </button>
+  </section>
+  <section class="finance-highlight">
+    <h1><span>Controle </span> suas finanças agora!</h1>
+    <img
+      src="assets/images/undraw_online-banking_l9sn.svg"
+      alt="Finance illustration"
+    />
+  </section>
+</main>

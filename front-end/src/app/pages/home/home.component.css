@@ -1,0 +1,10 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.content {
+  flex: 1; /* Garante que o conteúdo ocupe o espaço restante */
+  overflow: auto;
+  padding: 3rem;
+}
