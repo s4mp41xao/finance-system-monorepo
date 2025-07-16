@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # Serviço do Banco de Dados MySQL
+  db:
+    image: mysql:8.0
+    container_name: finance-system-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # Será lido do seu arquivo .env
+      MYSQL_DATABASE: finance_bank
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '3306:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+
+  # Serviço do Backend (Java)
+  backend:
+    build: ./back-end/jwt-login-and-register # <-- Caminho corrigido para o build
+    container_name: finance-system-api
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - '8080:8080'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/finance_bank?allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SECRET_KEY: ${JWT_SECRET}
+
+  # Serviço do Frontend (Angular)
+  frontend:
+    build: ./front-end/angular-login-and-register # <-- Caminho corrigido para o build
+    container_name: finance-system-ui
+    restart: always
+    ports:
+      - '4200:80'
+
+volumes:
+  db_data:
