@@ -1,0 +1,25 @@
+# Arquivos de IDEs
+.idea/
+*.iml
+.vscode/
+
+# Arquivos de Build do Java/Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+build-number.properties
+
+# Arquivos de Build do Node.js
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
