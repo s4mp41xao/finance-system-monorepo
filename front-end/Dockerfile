@@ -18,4 +18,4 @@ FROM nginx:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # !! IMPORTANTE: Substitua 'seu-projeto-angular' pelo nome do seu projeto !!
-COPY --from=builder /app/dist/angular-finance-crud/ /usr/share/nginx/html
+COPY --from=builder /app/dist/angular-finance-crud/browser/ /usr/share/nginx/html
